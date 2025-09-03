@@ -1,7 +1,8 @@
 {
   "redirects": [
     {
-      "source": "https://hechthospitality.com/:path*",
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "hechthospitality.com" }],
       "destination": "https://www.hechthospitality.com/:path*",
       "permanent": true
     }
