@@ -13,7 +13,8 @@ export default function Home() {
       vrbo: "https://www.vrbo.com/2747791?dateless=true",
       // NOTE: this URL is a VRBO page, not a direct image.
       // If it doesn't show, replace with a direct photo URL (jpg/png).
-      image: "https://www.vrbo.com/2747791?dateless=true&pwaThumbnailDialog=thumbnail-gallery&pwaDialogNested=media-gallery",
+      image: "image: "/oasis.jpg",
+",
     },
   ];
 
