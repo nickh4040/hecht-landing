@@ -1,6 +1,5 @@
 // pages/index.js
 export default function Home() {
-  // Your property list (add more objects to show more homes)
   const listings = [
     {
       title: "The Scottsdale Oasis",
@@ -10,38 +9,20 @@ export default function Home() {
       rate: "See Airbnb/VRBO for current rate",
       airbnb: "https://www.airbnb.com/rooms/52926264",
       vrbo: "https://www.vrbo.com/2747791?dateless=true",
-      image: "/oasis.jpg" // <-- ensure this file exists in /public
-    }
+      image: "/oasis.jpg", // must exist in /public
+    },
   ];
 
-  // Simple styles
   const wrap = {
     minHeight: "100vh",
     background: "#0b1426",
     color: "#fff",
-    fontFamily:
-      "system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif",
+    fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif",
   };
   const section = { maxWidth: 980, margin: "0 auto", padding: "56px 20px" };
-  const grid = {
-    display: "grid",
-    gap: 20,
-    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-  };
-  const card = {
-    background: "#121a2e",
-    borderRadius: 16,
-    padding: 20,
-    boxShadow: "0 10px 24px rgba(0,0,0,.2)",
-  };
-  const chip = {
-    display: "inline-block",
-    marginRight: 8,
-    padding: "4px 10px",
-    borderRadius: 999,
-    background: "rgba(255,255,255,.08)",
-    fontSize: 12,
-  };
+  const grid = { display: "grid", gap: 20, gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" };
+  const card = { background: "#121a2e", borderRadius: 16, padding: 20, boxShadow: "0 10px 24px rgba(0,0,0,.2)" };
+  const chip = { display: "inline-block", marginRight: 8, padding: "4px 10px", borderRadius: 999, background: "rgba(255,255,255,.08)", fontSize: 12 };
 
   return (
     <main style={wrap}>
@@ -60,13 +41,7 @@ export default function Home() {
                 <img
                   src={p.image}
                   alt={p.title}
-                  style={{
-                    width: "100%",
-                    height: 200,
-                    objectFit: "cover",
-                    borderRadius: 12,
-                    marginBottom: 12,
-                  }}
+                  style={{ width: "100%", height: 200, objectFit: "cover", borderRadius: 12, marginBottom: 12 }}
                 />
               ) : null}
 
@@ -77,29 +52,17 @@ export default function Home() {
 
               <div style={{ marginBottom: 10 }}>
                 {p.highlights.map((h, j) => (
-                  <span key={j} style={chip}>
-                    {h}
-                  </span>
+                  <span key={j} style={chip}>{h}</span>
                 ))}
               </div>
 
               <div style={{ marginBottom: 12, fontWeight: 600 }}>{p.rate}</div>
 
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <a
-                  href={p.airbnb}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "#3b82f6", fontWeight: 600 }}
-                >
+                <a href={p.airbnb} target="_blank" rel="noopener noreferrer" style={{ color: "#3b82f6", fontWeight: 600 }}>
                   Airbnb →
                 </a>
-                <a
-                  href={p.vrbo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "#3b82f6", fontWeight: 600 }}
-                >
+                <a href={p.vrbo} target="_blank" rel="noopener noreferrer" style={{ color: "#3b82f6", fontWeight: 600 }}>
                   VRBO →
                 </a>
               </div>
@@ -110,15 +73,7 @@ export default function Home() {
         <footer style={{ marginTop: 36 }}>
           <a
             href="mailto:hello@hechthospitality.com"
-            style={{
-              display: "inline-block",
-              padding: "12px 16px",
-              borderRadius: 10,
-              background: "#3b82f6",
-              color: "#fff",
-              textDecoration: "none",
-              fontWeight: 600,
-            }}
+            style={{ display: "inline-block", padding: "12px 16px", borderRadius: 10, background: "#3b82f6", color: "#fff", textDecoration: "none", fontWeight: 600 }}
           >
             Contact Us
           </a>
