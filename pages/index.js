@@ -18,14 +18,14 @@ export default function Home() {
           <div style={card}>
             <h3 style={{marginTop:0}}>Old Town 2BR</h3>
             <p>Sleeps 4 · Walk to restaurants</p>
-            <a href="https://airbnb.com" target="_blank" style={{color:'#3b82f6'}}>Airbnb</a> ·{' '}
-            <a href="https://vrbo.com" target="_blank" style={{color:'#3b82f6'}}>VRBO</a>
+            <a href="https://www.vrbo.com/2747791?dateless=true" target="_blank" style={{color:'#3b82f6'}}>Airbnb</a> ·{' '}
+            <a href="https://www.airbnb.com/hosting/listings/editor/52926264/view-your-space" target="_blank" style={{color:'#3b82f6'}}>VRBO</a>
           </div>
           <div style={card}>
             <h3 style={{marginTop:0}}>Desert View 3BR</h3>
             <p>Sleeps 6 · Pool</p>
-            <a href="https://airbnb.com" target="_blank" style={{color:'#3b82f6'}}>Airbnb</a> ·{' '}
-            <a href="https://vrbo.com" target="_blank" style={{color:'#3b82f6'}}>VRBO</a>
+            <a href="https://www.airbnb.com/hosting/listings/editor/52926264/view-your-space" target="_blank" style={{color:'#3b82f6'}}>Airbnb</a> ·{' '}
+            <a href="https://www.vrbo.com/2747791?dateless=true" target="_blank" style={{color:'#3b82f6'}}>VRBO</a>
           </div>
         </div>
 
