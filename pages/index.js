@@ -1,60 +1,138 @@
 // pages/index.js
+import Head from "next/head";
+
 export default function Home() {
-  const listings = [
-    {
-      title: "The Scottsdale Oasis",
-      location: "Old Town Scottsdale",
-      sleeps: 6,
-      highlights: ["pool", "washer", "dryer", "parking", "garage", "pet friendly", "fireplace"],
-      rate: "See Airbnb/VRBO for current rate",
-      airbnb: "https://www.airbnb.com/rooms/52926264",
-      vrbo: "https://www.vrbo.com/2747791?dateless=true",
-      image: "/d4ccc866-ea30-4579-ab59-ea552fd99eac.jpg", // <-- your actual file
-    },
-  ];
-
-  const wrap = { minHeight:"100vh", background:"#0b1426", color:"#fff", fontFamily:"system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" };
-  const section = { maxWidth:980, margin:"0 auto", padding:"56px 20px" };
-  const grid = { display:"grid", gap:20, gridTemplateColumns:"repeat(auto-fit, minmax(260px, 1fr))" };
-  const card = { background:"#121a2e", borderRadius:16, padding:20, boxShadow:"0 10px 24px rgba(0,0,0,.2)" };
-  const chip = { display:"inline-block", marginRight:8, padding:"4px 10px", borderRadius:999, background:"rgba(255,255,255,.08)", fontSize:12 };
-
   return (
-    <main style={wrap}>
-      <section style={section}>
-        <header style={{ marginBottom:20 }}>
-          <h1 style={{ margin:0, fontSize:42 }}>Hecht Hospitality</h1>
-          <p style={{ opacity:.9, marginTop:6, fontSize:18 }}>Modern, easy stays in Scottsdale. Book on Airbnb or VRBO.</p>
-        </header>
+    <div>
+      <Head>
+        <title>Hecht Hospitality</title>
+        <meta
+          name="description"
+          content="Modern, easy stays in Scottsdale. Book on Airbnb, VRBO, or Furnished Finder."
+        />
+      </Head>
 
-        <div style={grid}>
-          {listings.map((p,i)=>(
-            <article key={i} style={card}>
-              {p.image && (
-                <img
-                  src={p.image}
-                  alt={p.title}
-                  style={{ width:"100%", height:200, objectFit:"cover", borderRadius:12, marginBottom:12 }}
-                />
-              )}
-              <h3 style={{ margin:"0 0 6px" }}>{p.title}</h3>
-              <div style={{ opacity:.85, marginBottom:8 }}>{p.location} • Sleeps {p.sleeps}</div>
-              <div style={{ marginBottom:10 }}>{p.highlights.map((h,j)=><span key={j} style={chip}>{h}</span>)}</div>
-              <div style={{ marginBottom:12, fontWeight:600 }}>{p.rate}</div>
-              <div style={{ display:"flex", gap:12, flexWrap:"wrap" }}>
-                <a href={p.airbnb} target="_blank" rel="noopener noreferrer" style={{ color:"#3b82f6", fontWeight:600 }}>Airbnb →</a>
-                <a href={p.vrbo}   target="_blank" rel="noopener noreferrer" style={{ color:"#3b82f6", fontWeight:600 }}>VRBO →</a>
-              </div>
-            </article>
-          ))}
-        </div>
+      <main style={{ maxWidth: "1000px", margin: "0 auto", padding: "2rem" }}>
+        <h1 style={{ fontSize: "2rem", marginBottom: "2rem" }}>
+          Hecht Hospitality
+        </h1>
 
-        <footer style={{ marginTop:36 }}>
-          <a href="mailto:hello@hechthospitality.com" style={{ display:"inline-block", padding:"12px 16px", borderRadius:10, background:"#3b82f6", color:"#fff", textDecoration:"none", fontWeight:600 }}>
-            Contact Us
-          </a>
-        </footer>
-      </section>
-    </main>
+        {/* === Property 1: The Scottsdale Oasis === */}
+        <section
+          style={{
+            margin: "2rem 0",
+            padding: "1.25rem",
+            border: "1px solid #e5e7eb",
+            borderRadius: "1rem",
+          }}
+        >
+          <img
+            src="/scottsdale-oasis.jpg"
+            alt="The Scottsdale Oasis living room"
+            style={{ width: "100%", borderRadius: "0.75rem", marginBottom: "1rem" }}
+          />
+
+          <h3 style={{ fontSize: "1.5rem", marginBottom: ".25rem" }}>
+            The Scottsdale Oasis
+          </h3>
+          <p style={{ margin: ".25rem 0 1rem", color: "#374151" }}>
+            Old Town Scottsdale • Sleeps 6
+          </p>
+
+          <p
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: ".5rem",
+              margin: "0 0 1rem",
+            }}
+          >
+            <span style={chipStyle}>pool</span>
+            <span style={chipStyle}>washer</span>
+            <span style={chipStyle}>dryer</span>
+          </p>
+
+          <p style={{ margin: "0 0 1rem", color: "#6b7280" }}>
+            See Airbnb/VRBO for current rate
+          </p>
+
+          <div style={{ display: "flex", gap: ".75rem", flexWrap: "wrap" }}>
+            <a href="https://airbnb.com/" target="_blank" rel="noopener noreferrer" style={btnStyle}>
+              Airbnb →
+            </a>
+            <a href="https://vrbo.com/" target="_blank" rel="noopener noreferrer" style={btnStyle}>
+              VRBO →
+            </a>
+          </div>
+        </section>
+
+        {/* === Property 2: New Furnished Finder Listing === */}
+        <section
+          style={{
+            margin: "2rem 0",
+            padding: "1.25rem",
+            border: "1px solid #e5e7eb",
+            borderRadius: "1rem",
+          }}
+        >
+          <img
+            src="/new-property.jpg"
+            alt="New property photo"
+            style={{ width: "100%", borderRadius: "0.75rem", marginBottom: "1rem" }}
+          />
+
+          <h3 style={{ fontSize: "1.5rem", marginBottom: ".25rem" }}>
+            Desert Bloom Retreat
+          </h3>
+          <p style={{ margin: ".25rem 0 1rem", color: "#374151" }}>
+            Scottsdale • Sleeps 2
+          </p>
+
+          <p
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: ".5rem",
+              margin: "0 0 1rem",
+            }}
+          >
+            <span style={chipStyle}>wifi</span>
+            <span style={chipStyle}>parking</span>
+            <span style={chipStyle}>furnished</span>
+          </p>
+
+          <p style={{ margin: "0 0 1rem", color: "#6b7280" }}>
+            See Furnished Finder for current rate
+          </p>
+
+          <div style={{ display: "flex", gap: ".75rem", flexWrap: "wrap" }}>
+            <a
+              href="https://www.furnishedfinder.com/property/581506_1?moveDate=%7B%22in%22%3A%222026-04-01%22%7D&budget=%7B%22min%22%3A2000%2C%22max%22%3A2500%7D&filters=%7B%22minBedroomCount%22%3A1%2C%22minBedCount%22%3A1%2C%22minBathroomCount%22%3A1%7D"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={btnStyle}
+            >
+              Furnished Finder →
+            </a>
+          </div>
+        </section>
+      </main>
+    </div>
   );
 }
+
+// Shared styles
+const chipStyle = {
+  padding: ".25rem .6rem",
+  border: "1px solid #d1d5db",
+  borderRadius: "999px",
+  fontSize: ".9rem",
+};
+
+const btnStyle = {
+  textDecoration: "none",
+  padding: ".6rem 1rem",
+  border: "1px solid #111827",
+  borderRadius: ".75rem",
+  fontWeight: 600,
+};
