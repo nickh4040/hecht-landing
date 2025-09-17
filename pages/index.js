@@ -35,7 +35,7 @@ export default function Home() {
 
       {/* --- DESERT DECOR --- */}
       <div className="desertDecor" aria-hidden="true">
-        {/* Sun + mountain ridge below it */}
+        {/* Sun + small mountain ridge below it */}
         <div className="sun" />
         <div className="sunMountain" />
 
@@ -80,16 +80,17 @@ export default function Home() {
         <div className="dunes front" />
       </div>
 
-      {/* --- DECOR & BUTTON STYLES --- */}
+      {/* --- DECOR, CARDS & GUIDE BUTTON STYLES --- */}
       <style jsx>{`
         .desertDecor {
           position: fixed;
           inset: 0;
-          z-index: 0;
+          z-index: 0; /* behind content */
           pointer-events: none;
           overflow: hidden;
         }
 
+        /* Sun in LEFT corner */
         .sun {
           position: absolute;
           top: clamp(24px, 6vh, 60px);
@@ -108,9 +109,10 @@ export default function Home() {
           opacity: 0.85;
         }
 
+        /* Small ridge under the sun */
         .sunMountain {
           position: absolute;
-          top: clamp(160px, 18vh, 220px);
+          top: clamp(160px, 18vh, 220px); /* sits below the sun */
           left: 0;
           width: 46vw;
           height: clamp(90px, 12vh, 140px);
@@ -120,6 +122,7 @@ export default function Home() {
           background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 240 L120 210 L240 235 L360 200 L460 225 L560 188 L680 230 L800 205 L920 225 L1040 212 L1200 232 L1200 300 L0 300 Z' fill='%23873a2e'/></svg>");
         }
 
+        /* Mountains (layered silhouettes using SVG data URIs) */
         .mountains {
           position: absolute;
           left: -5vw;
@@ -128,6 +131,7 @@ export default function Home() {
           background-repeat: repeat-x;
           background-size: auto 100%;
           opacity: 0.65;
+          filter: saturate(0.92);
         }
         .mountains.m1 {
           bottom: 32vh;
@@ -145,22 +149,157 @@ export default function Home() {
           background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 220 L120 210 L240 220 L360 200 L480 218 L600 205 L720 220 L840 210 L960 220 L1080 208 L1200 220 L1200 300 L0 300 Z' fill='%23712f24'/></svg>");
         }
 
+        /* Dunes */
         .dunes {
           position: absolute;
           left: -5vw;
           right: -5vw;
           bottom: 0;
           height: 34vh;
+          border-top-left-radius: 35% 30%;
+          border-top-right-radius: 35% 30%;
+          mask-image: radial-gradient(160% 60% at 50% 100%, black 55%, transparent 90%);
         }
-        .dunes.back { background: linear-gradient(#8b2f24, #7b291f); opacity: 0.75; }
-        .dunes.mid { background: linear-gradient(#9b3a2a, #8a3024); opacity: 0.85; }
-        .dunes.front { background: linear-gradient(#b24533, #9a3628); }
+        .dunes.back {
+          height: 26vh;
+          bottom: 0;
+          background: linear-gradient(#8b2f24, #7b291f);
+          opacity: 0.75;
+          filter: blur(0.4px);
+        }
+        .dunes.mid {
+          height: 30vh;
+          bottom: -1vh;
+          background: linear-gradient(#9b3a2a, #8a3024);
+          opacity: 0.85;
+        }
+        .dunes.front {
+          height: 34vh;
+          bottom: -2vh;
+          background: linear-gradient(#b24533, #9a3628);
+          box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25) inset;
+        }
 
-        /* Guide Button */
+        /* Decorative cacti (background) */
+        .cactus,
+        .cactus::before,
+        .cactus::after {
+          background: #1f7f1f;
+          border: 2px solid #145214;
+          box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+        }
+        .cactus {
+          position: absolute;
+          bottom: 8vh;
+          width: 20px;
+          height: 70px;
+          border-radius: 12px;
+          transform-origin: bottom center;
+          filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.12));
+        }
+        .cactus.tall { height: 110px; width: 24px; }
+        .cactus.medium { height: 90px; width: 22px; }
+        .cactus.short { height: 70px; width: 20px; }
+        .cactus::before,
+        .cactus::after {
+          content: "";
+          position: absolute;
+          width: 14px;
+          height: 40%;
+          border-radius: 12px;
+          top: 22%;
+        }
+        .cactus::before { left: -12px; }
+        .cactus::after { right: -12px; height: 34%; top: 32%; }
+        .cactus,
+        .cactus::before,
+        .cactus::after {
+          background-image: linear-gradient(
+              90deg,
+              rgba(255, 255, 255, 0.09),
+              rgba(255, 255, 255, 0.09) 2px,
+              transparent 2px,
+              transparent 6px
+            ),
+            linear-gradient(0deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
+          background-size: 8px 100%, auto;
+        }
+
+        /* Side columns of cacti */
+        .cactusColumn {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: clamp(46px, 6vw, 72px);
+          display: grid;
+          grid-template-rows: repeat(12, 1fr);
+          align-items: end;
+          gap: 2vh;
+          padding-bottom: 8vh;
+          opacity: 0.92;
+        }
+        .cactusColumn.left  { left: max(0px, env(safe-area-inset-left)); }
+        .cactusColumn.right { right: max(0px, env(safe-area-inset-right)); }
+
+        /* Bottom field spread across width */
+        .cactusField {
+          position: absolute;
+          left: -2vw;
+          right: -2vw;
+          bottom: 0;
+          height: 34vh;
+          pointer-events: none;
+          mix-blend-mode: normal;
+        }
+
+        /* Mountain-shaped cards */
+        .mountainCard {
+          position: relative;
+          padding: 1.25rem;
+          background: #822e22;
+          border: 1px solid #7a2a1e;
+          color: #f9fafb;
+          -webkit-clip-path: polygon(
+            0% 40%,
+            8% 28%,
+            18% 46%,
+            28% 22%,
+            38% 38%,
+            50% 16%,
+            60% 36%,
+            70% 24%,
+            82% 42%,
+            92% 30%,
+            100% 44%,
+            100% 100%,
+            0% 100%
+          );
+          clip-path: polygon(
+            0% 40%,
+            8% 28%,
+            18% 46%,
+            28% 22%,
+            38% 38%,
+            50% 16%,
+            60% 36%,
+            70% 24%,
+            82% 42%,
+            92% 30%,
+            100% 44%,
+            100% 100%,
+            0% 100%
+          );
+          border-bottom-left-radius: 1rem;
+          border-bottom-right-radius: 1rem;
+          backdrop-filter: saturate(1.1);
+          text-align: center; /* center all content inside */
+        }
+
+        /* ---------- GUIDE BUTTON (top-right, bigger cactus-green text) ---------- */
         .guideWrapper {
           position: fixed;
-          top: 0.7in;
-          right: 1rem;
+          top: 0.7in;   /* slightly down so it never clips */
+          right: 1rem;  /* top-right corner */
           z-index: 1000;
           pointer-events: auto;
         }
@@ -175,21 +314,86 @@ export default function Home() {
           font-weight: 800;
           font-size: 1.15rem; /* bigger font */
           line-height: 1.2;
-          color: #228b22; /* cactus green text */
-          background: #ffffff; /* white bg so green text pops */
+          color: #228b22;      /* cactus green text */
+          background: #ffffff; /* white background so green pops */
           border: 2px solid #145214;
           border-radius: 32px;
           box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28);
           transition: transform 0.2s ease, box-shadow 0.2s ease;
+          background-image: radial-gradient(
+              circle at 12px 10px,
+              rgba(0, 0, 0, 0.05) 0,
+              rgba(0, 0, 0, 0.05) 2px,
+              transparent 3px
+            );
+          background-size: 28px 28px;
         }
+
         .cactusBtn:hover {
           transform: translateY(-1px) scale(1.03);
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.32);
         }
+
+        /* Arms for the cactus button (left + right) */
         .cactusEmoji {
           position: relative;
           display: inline-flex;
         }
+        /* Left arm */
+        .cactusBtn::before {
+          content: "";
+          position: absolute;
+          left: -12px;
+          bottom: 12px;
+          width: 18px;
+          height: 34px;
+          background: #228b22;
+          border: 2px solid #145214;
+          border-right: none;
+          border-radius: 14px 0 0 14px;
+          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
+        }
+        .cactusBtn::after {
+          content: "";
+          position: absolute;
+          left: -8px;
+          bottom: 34px;
+          width: 14px;
+          height: 14px;
+          background: #228b22;
+          border: 2px solid #145214;
+          border-bottom: none;
+          border-radius: 14px 14px 0 0;
+          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
+        }
+        /* Right arm */
+        .cactusEmoji::before {
+          content: "";
+          position: absolute;
+          right: -12px;
+          bottom: 16px;
+          width: 18px;
+          height: 30px;
+          background: #228b22;
+          border: 2px solid #145214;
+          border-left: none;
+          border-radius: 0 14px 14px 0;
+          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
+        }
+        .cactusEmoji::after {
+          content: "";
+          position: absolute;
+          right: -8px;
+          bottom: 40px;
+          width: 14px;
+          height: 14px;
+          background: #228b22;
+          border: 2px solid #145214;
+          border-bottom: none;
+          border-radius: 14px 14px 0 0;
+          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
+        }
+
         .cactusText { white-space: nowrap; }
 
         @media (max-width: 540px) {
@@ -198,7 +402,7 @@ export default function Home() {
         }
       `}</style>
 
-      {/* Guide button — top right, cactus arms style */}
+      {/* Guide button — top right */}
       <div className="guideWrapper">
         <a
           className="cactusBtn"
@@ -291,7 +495,7 @@ export default function Home() {
 /* ---- Shared styles ---- */
 const mainStyle = {
   position: "relative",
-  zIndex: 1,
+  zIndex: 1, // above decor
   maxWidth: "1000px",
   margin: "0 auto",
   padding: "2rem",
@@ -303,7 +507,7 @@ const headerText = {
   marginBottom: "2rem",
   textAlign: "center",
   fontWeight: "bold",
-  color: "#40e0d0",
+  color: "#40e0d0", // turquoise
 };
 
 const sectionWrapper = { margin: "2rem 0" };
