@@ -12,7 +12,6 @@ export default function Home() {
         />
       </Head>
 
-      {/* Global background + base text color */}
       <style jsx global>{`
         html, body, #__next { height: 100%; }
         body { margin: 0; background: #0a1f44; color: #f9fafb; font-family: -apple-system, Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
@@ -41,22 +40,8 @@ export default function Home() {
           <p style={noteStyle}>See Airbnb/VRBO for current rate</p>
 
           <div style={btnWrapper}>
-            <a
-              href="https://airbnb.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={btnStyle}
-            >
-              Airbnb →
-            </a>
-            <a
-              href="https://vrbo.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={btnStyle}
-            >
-              VRBO →
-            </a>
+            <a href="https://airbnb.com/" target="_blank" rel="noopener noreferrer" style={btnStyle}>Airbnb →</a>
+            <a href="https://vrbo.com/" target="_blank" rel="noopener noreferrer" style={btnStyle}>VRBO →</a>
           </div>
         </section>
 
@@ -94,7 +79,7 @@ export default function Home() {
   );
 }
 
-/* ---- Styles ---- */
+/* ---- Shared styles ---- */
 const mainStyle = {
   maxWidth: "1000px",
   margin: "0 auto",
@@ -113,13 +98,15 @@ const sectionStyle = {
   padding: "1.25rem",
   border: "1px solid #334155",
   borderRadius: "1rem",
-  backgroundColor: "#1e293b", // dark card bg
+  backgroundColor: "#1e293b",
 };
 
 const imgStyle = {
-  width: "50%",            // half size
+  width: "50%",
+  height: "300px",          // fixed height
+  objectFit: "cover",       // crop overflow
   borderRadius: "0.75rem",
-  margin: "0 auto 1rem",   // centered
+  margin: "0 auto 1rem",
   display: "block",
 };
 
