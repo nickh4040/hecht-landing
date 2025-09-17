@@ -12,6 +12,13 @@ export default function Home() {
         />
       </Head>
 
+      {/* Global background + base text color */}
+      <style jsx global>{`
+        html, body, #__next { height: 100%; }
+        body { margin: 0; background: #0a1f44; color: #f9fafb; font-family: -apple-system, Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+        a { color: inherit; }
+      `}</style>
+
       <main style={mainStyle}>
         <h1 style={h1Style}>Hecht Hospitality</h1>
 
@@ -87,13 +94,11 @@ export default function Home() {
   );
 }
 
-/* ---- Shared styles ---- */
+/* ---- Styles ---- */
 const mainStyle = {
   maxWidth: "1000px",
   margin: "0 auto",
   padding: "2rem",
-  backgroundColor: "#0a1f44", // navy blue
-  color: "#f9fafb", // light text
   minHeight: "100vh",
 };
 
@@ -112,9 +117,9 @@ const sectionStyle = {
 };
 
 const imgStyle = {
-  width: "50%", // half size
+  width: "50%",            // half size
   borderRadius: "0.75rem",
-  margin: "0 auto 1rem",
+  margin: "0 auto 1rem",   // centered
   display: "block",
 };
 
