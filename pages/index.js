@@ -35,10 +35,10 @@ export default function Home() {
 
       {/* --- DESERT DECOR LAYER (behind everything) --- */}
       <div className="desertDecor" aria-hidden="true">
-        {/* Sun (moved to LEFT corner) */}
+        {/* Sun in LEFT corner */}
         <div className="sun" />
 
-        {/* Mountain ranges */}
+        {/* Mountains */}
         <div className="mountains m1" />
         <div className="mountains m2" />
         <div className="mountains m3" />
@@ -73,24 +73,24 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Sand dunes */}
+        {/* Dunes */}
         <div className="dunes back" />
         <div className="dunes mid" />
         <div className="dunes front" />
       </div>
 
-      {/* --- DESERT DECOR & MOUNTAIN CARD STYLES --- */}
+      {/* --- DESERT DECOR, MOUNTAIN CARDS & SAGUARO BUTTON STYLES --- */}
       <style jsx>{`
-        /* Utilities */
+        /* Background decor container */
         .desertDecor {
           position: fixed;
           inset: 0;
           z-index: 0; /* behind content */
-          pointer-events: none; /* never block clicks */
+          pointer-events: none;
           overflow: hidden;
         }
 
-        /* Sun (left corner now) */
+        /* Sun (left) */
         .sun {
           position: absolute;
           top: clamp(24px, 6vh, 60px);
@@ -109,7 +109,7 @@ export default function Home() {
           opacity: 0.85;
         }
 
-        /* Mountains (layered silhouettes using SVG data URIs) */
+        /* Mountains */
         .mountains {
           position: absolute;
           left: -5vw;
@@ -167,7 +167,7 @@ export default function Home() {
           box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25) inset;
         }
 
-        /* Cactus base shape for background scene */
+        /* Decorative cacti (background) */
         .cactus,
         .cactus::before,
         .cactus::after {
@@ -246,32 +246,6 @@ export default function Home() {
         .cactusColumn.right {
           right: max(0px, env(safe-area-inset-right));
         }
-        .cactusColumn .cactus.small {
-          position: relative;
-          bottom: 0;
-          margin: 0 auto;
-          transform: translateY(0) scale(0.9);
-          height: 62px;
-          width: 18px;
-        }
-        .cactusColumn .cactus.small.s1 {
-          transform: translateY(0) scale(0.85) rotate(-2deg);
-        }
-        .cactusColumn .cactus.small.s2 {
-          transform: translateY(4px) scale(0.95) rotate(1deg);
-        }
-        .cactusColumn .cactus.small.s3 {
-          transform: translateY(-2px) scale(0.9) rotate(2deg);
-        }
-        .cactusColumn .cactus.small.s4 {
-          transform: translateY(3px) scale(0.92) rotate(-1deg);
-        }
-        .cactusColumn .cactus.small.s5 {
-          transform: translateY(1px) scale(0.88) rotate(1deg);
-        }
-        .cactusColumn .cactus.small.s6 {
-          transform: translateY(-1px) scale(0.9) rotate(-2deg);
-        }
 
         /* Bottom field spread across width */
         .cactusField {
@@ -324,6 +298,7 @@ export default function Home() {
           border-bottom-left-radius: 1rem;
           border-bottom-right-radius: 1rem;
           backdrop-filter: saturate(1.1);
+          text-align: center; /* center all content inside */
         }
 
         /* ---------- SAGUARO BUTTON ART ---------- */
@@ -466,7 +441,7 @@ export default function Home() {
         }
       `}</style>
 
-      {/* Top-right cactus button (now a true saguaro) */}
+      {/* Top-right saguaro button */}
       <div className="topRightWrapper">
         <a
           className="cactusBtn"
@@ -475,7 +450,6 @@ export default function Home() {
           rel="noopener noreferrer"
           aria-label="Hecht Hospitality Guide to Scottsdale"
         >
-          {/* Saguaro icon */}
           <span className="saguaro" aria-hidden="true">
             <span className="arm left" />
             <span className="arm right" />
@@ -486,7 +460,6 @@ export default function Home() {
       </div>
 
       <main style={mainStyle}>
-        {/* Big turquoise text header */}
         <h1 style={headerText}>Hecht Hospitality</h1>
 
         {/* === Property 1: The Scottsdale Oasis === */}
@@ -499,13 +472,11 @@ export default function Home() {
             />
             <h3 style={titleStyle}>The Scottsdale Oasis</h3>
             <p style={subtitleStyle}>Old Town Scottsdale • Sleeps 6</p>
-
             <p style={chipWrapper}>
               <span style={chipStyle}>pool</span>
               <span style={chipStyle}>washer</span>
               <span style={chipStyle}>dryer</span>
             </p>
-
             <p style={directStyle}>
               <strong>Book Directly and Save!</strong>
               <br />
@@ -514,10 +485,9 @@ export default function Home() {
                 nick.hecht@yahoo.com
               </a>
             </p>
-
             <div style={btnWrapper}>
               <a
-                href="https://www.airbnb.ca/rooms/52926264?check_in=2025-09-25&check_out=2025-09-28&guests=1&adults=1&s=67&unique_share_id=37fe3738-ded1-40ba-adf4-de40bdde6cc5&source_impression_id=p3_1758142493_P3hCZaAuclUGDHhD&_set_bev_on_new_domain=1756964426_EAODkzODM4ZGRjZT&locale=en"
+                href="https://www.airbnb.ca/rooms/52926264?check_in=2025-09-25&check_out=2025-09-28&guests=1&adults=1"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={btnStyle}
@@ -525,7 +495,7 @@ export default function Home() {
                 Airbnb Rates →
               </a>
               <a
-                href="https://www.vrbo.com/2747791?chkin=2025-10-1&chkout=2025-10-2&rm1=a2&regionId=9829&searchId=2c82cc2a-7eac-42d4-92c4-256890a55860"
+                href="https://www.vrbo.com/2747791?chkin=2025-10-1&chkout=2025-10-2"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={btnStyle}
@@ -546,13 +516,11 @@ export default function Home() {
             />
             <h3 style={titleStyle}>The Sunrise Condo</h3>
             <p style={subtitleStyle}>Scottsdale • Sleeps 2</p>
-
             <p style={chipWrapper}>
               <span style={chipStyle}>wifi</span>
               <span style={chipStyle}>parking</span>
               <span style={chipStyle}>furnished</span>
             </p>
-
             <p style={directStyle}>
               <strong>Book Directly and Save!</strong>
               <br />
@@ -561,10 +529,9 @@ export default function Home() {
                 nick.hecht@yahoo.com
               </a>
             </p>
-
             <div style={btnWrapper}>
               <a
-                href="https://www.furnishedfinder.com/property/581506_1?moveDate=%7B%22in%22%3A%222026-04-01%22%7D&budget=%7B%22min%22%3A2000%2C%22max%22%3A2500%7D&filters=%7B%22minBedroomCount%22%3A1%2C%22minBedCount%22%3A1%2C%22minBathroomCount%22%3A1%7D"
+                href="https://www.furnishedfinder.com/property/581506_1"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={btnStyle}
@@ -575,7 +542,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Footer with logo */}
+        {/* Footer */}
         <footer style={footerStyle}>
           <img src="/logo.png" alt="Hecht Hospitality logo" style={logoStyle} />
         </footer>
@@ -602,9 +569,7 @@ const headerText = {
   color: "#40e0d0", // turquoise
 };
 
-const sectionWrapper = {
-  margin: "2rem 0",
-};
+const sectionWrapper = { margin: "2rem 0" };
 
 const imgStyle = {
   width: "50%",
@@ -615,14 +580,25 @@ const imgStyle = {
   display: "block",
 };
 
-const titleStyle = { fontSize: "1.5rem", marginBottom: ".25rem" };
-const subtitleStyle = { margin: ".25rem 0 1rem", color: "#f5d0c5" };
+const titleStyle = {
+  fontSize: "1.5rem",
+  marginBottom: ".25rem",
+  textAlign: "center",
+};
+
+const subtitleStyle = {
+  margin: ".25rem 0 1rem",
+  color: "#f5d0c5",
+  textAlign: "center",
+};
 
 const chipWrapper = {
   display: "flex",
+  justifyContent: "center",
   flexWrap: "wrap",
   gap: ".5rem",
   margin: "0 0 1rem",
+  textAlign: "center",
 };
 
 const chipStyle = {
@@ -636,6 +612,7 @@ const chipStyle = {
 const directStyle = {
   margin: "0 0 1rem",
   color: "#f9fafb",
+  textAlign: "center",
 };
 
 const emailStyle = {
@@ -645,8 +622,10 @@ const emailStyle = {
 
 const btnWrapper = {
   display: "flex",
+  justifyContent: "center",
   gap: ".75rem",
   flexWrap: "wrap",
+  textAlign: "center",
 };
 
 const btnStyle = {
@@ -656,6 +635,7 @@ const btnStyle = {
   borderRadius: ".75rem",
   fontWeight: 600,
   color: "#f9fafb",
+  textAlign: "center",
 };
 
 const footerStyle = {
