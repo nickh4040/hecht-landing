@@ -132,4 +132,229 @@ export default function Home() {
         .mountains.m1 {
           bottom: 32vh;
           opacity: 0.35;
-          background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 240 L120 180 L240 220 L360 150 L480
+          background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 240 L120 180 L240 220 L360 150 L480 210 L600 160 L720 220 L840 170 L960 210 L1080 185 L1200 220 L1200 300 L0 300 Z' fill='%23833a2e'/></svg>");
+        }
+        .mountains.m2 {
+          bottom: 26vh;
+          opacity: 0.5;
+          background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 230 L100 200 L200 230 L300 180 L420 210 L540 170 L660 230 L780 190 L900 210 L1020 200 L1200 230 L1200 300 L0 300 Z' fill='%237f3529'/></svg>");
+        }
+        .mountains.m3 {
+          bottom: 22vh;
+          opacity: 0.6;
+          background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 220 L120 210 L240 220 L360 200 L480 218 L600 205 L720 220 L840 210 L960 220 L1080 208 L1200 220 L1200 300 L0 300 Z' fill='%23712f24'/></svg>");
+        }
+
+        .dunes {
+          position: absolute;
+          left: -5vw;
+          right: -5vw;
+          bottom: 0;
+          height: 34vh;
+        }
+        .dunes.back { background: linear-gradient(#8b2f24, #7b291f); opacity: 0.75; }
+        .dunes.mid { background: linear-gradient(#9b3a2a, #8a3024); opacity: 0.85; }
+        .dunes.front { background: linear-gradient(#b24533, #9a3628); }
+
+        /* Guide Button */
+        .guideWrapper {
+          position: fixed;
+          top: 0.7in;
+          right: 1rem;
+          z-index: 1000;
+          pointer-events: auto;
+        }
+
+        .cactusBtn {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 1rem 1.25rem;
+          text-decoration: none;
+          font-weight: 800;
+          font-size: 1.15rem; /* bigger font */
+          line-height: 1.2;
+          color: #228b22; /* cactus green text */
+          background: #ffffff; /* white bg so green text pops */
+          border: 2px solid #145214;
+          border-radius: 32px;
+          box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28);
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .cactusBtn:hover {
+          transform: translateY(-1px) scale(1.03);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.32);
+        }
+        .cactusEmoji {
+          position: relative;
+          display: inline-flex;
+        }
+        .cactusText { white-space: nowrap; }
+
+        @media (max-width: 540px) {
+          .cactusText { display: none; }
+          .cactusBtn { padding: 0.7rem 0.8rem; border-radius: 999px; }
+        }
+      `}</style>
+
+      {/* Guide button — top right, cactus arms style */}
+      <div className="guideWrapper">
+        <a
+          className="cactusBtn"
+          href="https://www.airbnb.ca/s/guidebooks?refinement_paths[]=/guidebooks/3454492"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Hecht Hospitality Guide to Scottsdale"
+        >
+          <span className="cactusEmoji" aria-hidden="true">🌵</span>
+          <span className="cactusText">Hecht Hospitality Guide to Scottsdale</span>
+        </a>
+      </div>
+
+      <main style={mainStyle}>
+        <h1 style={headerText}>Hecht Hospitality</h1>
+
+        {/* === Property 1 === */}
+        <section style={sectionWrapper}>
+          <div className="mountainCard">
+            <img
+              src="/d4ccc866-ea30-4579-ab59-ea552fd99eac.jpg"
+              alt="The Scottsdale Oasis living room"
+              style={imgStyle}
+            />
+            <h3 style={titleStyle}>The Scottsdale Oasis</h3>
+            <p style={subtitleStyle}>Old Town Scottsdale • Sleeps 6</p>
+            <p style={chipWrapper}>
+              <span style={chipStyle}>pool</span>
+              <span style={chipStyle}>washer</span>
+              <span style={chipStyle}>dryer</span>
+            </p>
+            <p style={directStyle}>
+              <strong>Book Directly and Save!</strong>
+              <br />
+              Email:{" "}
+              <a href="mailto:nick.hecht@yahoo.com" style={emailStyle}>
+                nick.hecht@yahoo.com
+              </a>
+            </p>
+            <div style={btnWrapper}>
+              <a href="https://www.airbnb.ca/rooms/52926264" style={btnStyle}>
+                Airbnb Rates →
+              </a>
+              <a href="https://www.vrbo.com/2747791" style={btnStyle}>
+                VRBO Rates →
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* === Property 2 === */}
+        <section style={sectionWrapper}>
+          <div className="mountainCard">
+            <img
+              src="/581506_1_51205717-full.avif"
+              alt="The Sunrise Condo"
+              style={imgStyle}
+            />
+            <h3 style={titleStyle}>The Sunrise Condo</h3>
+            <p style={subtitleStyle}>Scottsdale • Sleeps 2</p>
+            <p style={chipWrapper}>
+              <span style={chipStyle}>wifi</span>
+              <span style={chipStyle}>parking</span>
+              <span style={chipStyle}>furnished</span>
+            </p>
+            <p style={directStyle}>
+              <strong>Book Directly and Save!</strong>
+              <br />
+              Email:{" "}
+              <a href="mailto:nick.hecht@yahoo.com" style={emailStyle}>
+                nick.hecht@yahoo.com
+              </a>
+            </p>
+            <div style={btnWrapper}>
+              <a href="https://www.furnishedfinder.com/property/581506_1" style={btnStyle}>
+                Furnished Finder Rates →
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <footer style={footerStyle}>
+          <img src="/logo.png" alt="Hecht Hospitality logo" style={logoStyle} />
+        </footer>
+      </main>
+    </div>
+  );
+}
+
+/* ---- Shared styles ---- */
+const mainStyle = {
+  position: "relative",
+  zIndex: 1,
+  maxWidth: "1000px",
+  margin: "0 auto",
+  padding: "2rem",
+  minHeight: "100vh",
+};
+
+const headerText = {
+  fontSize: "3rem",
+  marginBottom: "2rem",
+  textAlign: "center",
+  fontWeight: "bold",
+  color: "#40e0d0",
+};
+
+const sectionWrapper = { margin: "2rem 0" };
+
+const imgStyle = {
+  width: "50%",
+  height: "300px",
+  objectFit: "cover",
+  borderRadius: "0.75rem",
+  margin: "0 auto 1rem",
+  display: "block",
+};
+
+const titleStyle = { fontSize: "1.5rem", marginBottom: ".25rem", textAlign: "center" };
+const subtitleStyle = { margin: ".25rem 0 1rem", color: "#f5d0c5", textAlign: "center" };
+
+const chipWrapper = {
+  display: "flex",
+  justifyContent: "center",
+  flexWrap: "wrap",
+  gap: ".5rem",
+  margin: "0 0 1rem",
+};
+
+const chipStyle = {
+  padding: ".25rem .6rem",
+  border: "1px solid #f5a09a",
+  borderRadius: "999px",
+  fontSize: ".9rem",
+  backgroundColor: "#661f16",
+};
+
+const directStyle = { margin: "0 0 1rem", color: "#f9fafb", textAlign: "center" };
+const emailStyle = { textDecoration: "underline", color: "#f9fafb" };
+
+const btnWrapper = {
+  display: "flex",
+  justifyContent: "center",
+  gap: ".75rem",
+  flexWrap: "wrap",
+};
+
+const btnStyle = {
+  textDecoration: "none",
+  padding: ".6rem 1rem",
+  border: "1px solid #f9fafb",
+  borderRadius: ".75rem",
+  fontWeight: 600,
+  color: "#f9fafb",
+  textAlign: "center",
+};
+
+const footerStyle = { marginTop: "4rem", textAlign: "center" };
+const logoStyle = { width: "100px", margin: "0 auto" };
