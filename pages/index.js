@@ -1,3 +1,4 @@
+// pages/index.js
 import Head from "next/head";
 
 export default function Home() {
@@ -23,17 +24,30 @@ export default function Home() {
           />
           <h3 style={titleStyle}>The Scottsdale Oasis</h3>
           <p style={subtitleStyle}>Old Town Scottsdale • Sleeps 6</p>
-          <p style={chipRow}>
-            <span style={chip}>pool</span>
-            <span style={chip}>washer</span>
-            <span style={chip}>dryer</span>
+
+          <p style={chipWrapper}>
+            <span style={chipStyle}>pool</span>
+            <span style={chipStyle}>washer</span>
+            <span style={chipStyle}>dryer</span>
           </p>
-          <p style={note}>See Airbnb/VRBO for current rate</p>
-          <div style={btnRow}>
-            <a href="https://airbnb.com/" target="_blank" rel="noopener noreferrer" style={btn}>
+
+          <p style={noteStyle}>See Airbnb/VRBO for current rate</p>
+
+          <div style={btnWrapper}>
+            <a
+              href="https://airbnb.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={btnStyle}
+            >
               Airbnb →
             </a>
-            <a href="https://vrbo.com/" target="_blank" rel="noopener noreferrer" style={btn}>
+            <a
+              href="https://vrbo.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={btnStyle}
+            >
               VRBO →
             </a>
           </div>
@@ -48,18 +62,21 @@ export default function Home() {
           />
           <h3 style={titleStyle}>The Sunrise Condo</h3>
           <p style={subtitleStyle}>Scottsdale • Sleeps 2</p>
-          <p style={chipRow}>
-            <span style={chip}>wifi</span>
-            <span style={chip}>parking</span>
-            <span style={chip}>furnished</span>
+
+          <p style={chipWrapper}>
+            <span style={chipStyle}>wifi</span>
+            <span style={chipStyle}>parking</span>
+            <span style={chipStyle}>furnished</span>
           </p>
-          <p style={note}>See Furnished Finder for current rate</p>
-          <div style={btnRow}>
+
+          <p style={noteStyle}>See Furnished Finder for current rate</p>
+
+          <div style={btnWrapper}>
             <a
               href="https://www.furnishedfinder.com/property/581506_1?moveDate=%7B%22in%22%3A%222026-04-01%22%7D&budget=%7B%22min%22%3A2000%2C%22max%22%3A2500%7D&filters=%7B%22minBedroomCount%22%3A1%2C%22minBedCount%22%3A1%2C%22minBathroomCount%22%3A1%7D"
               target="_blank"
               rel="noopener noreferrer"
-              style={btn}
+              style={btnStyle}
             >
               Furnished Finder →
             </a>
@@ -70,7 +87,7 @@ export default function Home() {
   );
 }
 
-/* styles */
+/* ---- Shared styles ---- */
 const sectionStyle = {
   margin: "2rem 0",
   padding: "1.25rem",
@@ -86,4 +103,30 @@ const imgStyle = {
 };
 
 const titleStyle = { fontSize: "1.5rem", marginBottom: ".25rem" };
-const subtitleSty
+const subtitleStyle = { margin: ".25rem 0 1rem", color: "#374151" };
+
+const chipWrapper = {
+  display: "flex",
+  flexWrap: "wrap",
+  gap: ".5rem",
+  margin: "0 0 1rem",
+};
+
+const chipStyle = {
+  padding: ".25rem .6rem",
+  border: "1px solid #d1d5db",
+  borderRadius: "999px",
+  fontSize: ".9rem",
+};
+
+const noteStyle = { margin: "0 0 1rem", color: "#6b7280" };
+
+const btnWrapper = { display: "flex", gap: ".75rem", flexWrap: "wrap" };
+
+const btnStyle = {
+  textDecoration: "none",
+  padding: ".6rem 1rem",
+  border: "1px solid #111827",
+  borderRadius: ".75rem",
+  fontWeight: 600,
+};
