@@ -19,8 +19,8 @@ export default function Home() {
       `}</style>
 
       <main style={mainStyle}>
-        {/* Logo at the top */}
-        <img src="/logo.png" alt="Hecht Hospitality logo" style={logoStyle} />
+        {/* Big white text header */}
+        <h1 style={headerText}>Hecht Hospitality</h1>
 
         {/* === Property 1: The Scottsdale Oasis === */}
         <section style={sectionStyle}>
@@ -54,7 +54,7 @@ export default function Home() {
               rel="noopener noreferrer"
               style={btnStyle}
             >
-              Click here for rates →
+              Airbnb Rates →
             </a>
             <a
               href="https://vrbo.com/"
@@ -62,7 +62,7 @@ export default function Home() {
               rel="noopener noreferrer"
               style={btnStyle}
             >
-              Click here for rates →
+              VRBO Rates →
             </a>
           </div>
         </section>
@@ -99,10 +99,15 @@ export default function Home() {
               rel="noopener noreferrer"
               style={btnStyle}
             >
-              Click here for rates →
+              Furnished Finder Rates →
             </a>
           </div>
         </section>
+
+        {/* Footer with logo */}
+        <footer style={footerStyle}>
+          <img src="/logo.png" alt="Hecht Hospitality logo" style={logoStyle} />
+        </footer>
       </main>
     </div>
   );
@@ -116,10 +121,12 @@ const mainStyle = {
   minHeight: "100vh",
 };
 
-const logoStyle = {
-  display: "block",
-  margin: "0 auto 2rem",
-  width: "120px",   // adjust as needed
+const headerText = {
+  fontSize: "3rem",   // bigger text
+  marginBottom: "2rem",
+  textAlign: "center",
+  fontWeight: "bold",
+  color: "#ffffff",
 };
 
 const sectionStyle = {
@@ -167,7 +174,11 @@ const emailStyle = {
   color: "#f9fafb",
 };
 
-const btnWrapper = { display: "flex", gap: ".75rem", flexWrap: "wrap" };
+const btnWrapper = {
+  display: "flex",
+  gap: ".75rem",
+  flexWrap: "wrap",
+};
 
 const btnStyle = {
   textDecoration: "none",
@@ -176,4 +187,14 @@ const btnStyle = {
   borderRadius: ".75rem",
   fontWeight: 600,
   color: "#f9fafb",
+};
+
+const footerStyle = {
+  marginTop: "4rem",
+  textAlign: "center",
+};
+
+const logoStyle = {
+  width: "100px",
+  margin: "0 auto",
 };
