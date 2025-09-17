@@ -10,17 +10,157 @@ export default function Home() {
           name="description"
           content="Modern, easy stays in Scottsdale. Book on Airbnb, VRBO, or Furnished Finder."
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
+      {/* Global styles */}
       <style jsx global>{`
-        html, body, #__next { height: 100%; }
-        body { 
-          margin: 0; 
-          background: #A33C2E; /* Sedona red */
-          color: #f9fafb; 
-          font-family: -apple-system, Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif; 
+        html,
+        body,
+        #__next {
+          height: 100%;
         }
-        a { color: inherit; }
+        body {
+          margin: 0;
+          background: #a33c2e; /* Sedona red */
+          color: #f9fafb;
+          font-family: -apple-system, Inter, Segoe UI, Roboto, Helvetica, Arial,
+            sans-serif;
+        }
+        a {
+          color: inherit;
+        }
+      `}</style>
+
+      {/* Top-right cactus button */}
+      <div className="topRightWrapper">
+        <a
+          className="cactusBtn"
+          href="https://www.airbnb.ca/s/guidebooks?refinement_paths[]=/guidebooks/3454492"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Hecht Hospitality Guide to Scottsdale"
+        >
+          <span className="cactusEmoji" aria-hidden="true">🌵</span>
+          <span className="cactusText">Hecht Hospitality Guide to Scottsdale</span>
+        </a>
+      </div>
+
+      {/* Cactus button styles */}
+      <style jsx>{`
+        .topRightWrapper {
+          position: fixed;
+          top: 1rem;
+          right: 1rem;
+          z-index: 1000;
+        }
+
+        .cactusBtn {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.9rem 1.1rem 0.9rem 0.95rem;
+          text-decoration: none;
+          font-weight: 700;
+          font-size: 0.92rem;
+          line-height: 1;
+          color: #ffffff;
+          background: #228b22; /* cactus green */
+          border: 2px solid #145214;
+          border-radius: 28px;
+          box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28);
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          background-image: radial-gradient(
+              circle at 12px 10px,
+              rgba(255, 255, 255, 0.14) 0,
+              rgba(255, 255, 255, 0.14) 2px,
+              transparent 3px
+            ),
+            linear-gradient(0deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
+          background-size: 28px 28px, auto;
+        }
+
+        .cactusBtn:hover {
+          transform: translateY(-1px) scale(1.02);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.32);
+        }
+
+        /* Left arm */
+        .cactusBtn::before {
+          content: "";
+          position: absolute;
+          left: -12px;
+          bottom: 12px;
+          width: 18px;
+          height: 34px;
+          background: #228b22;
+          border: 2px solid #145214;
+          border-right: none;
+          border-radius: 14px 0 0 14px;
+          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
+        }
+        /* Left arm tip */
+        .cactusBtn::after {
+          content: "";
+          position: absolute;
+          left: -8px;
+          bottom: 34px;
+          width: 14px;
+          height: 14px;
+          background: #228b22;
+          border: 2px solid #145214;
+          border-bottom: none;
+          border-radius: 14px 14px 0 0;
+          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
+        }
+
+        /* Right arm */
+        .cactusEmoji::before {
+          content: "";
+          position: absolute;
+          right: -12px;
+          bottom: 16px;
+          width: 18px;
+          height: 30px;
+          background: #228b22;
+          border: 2px solid #145214;
+          border-left: none;
+          border-radius: 0 14px 14px 0;
+          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
+        }
+        .cactusEmoji::after {
+          content: "";
+          position: absolute;
+          right: -8px;
+          bottom: 40px;
+          width: 14px;
+          height: 14px;
+          background: #228b22;
+          border: 2px solid #145214;
+          border-bottom: none;
+          border-radius: 14px 14px 0 0;
+          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
+        }
+
+        .cactusEmoji {
+          position: relative;
+          display: inline-flex;
+        }
+
+        .cactusText {
+          white-space: nowrap;
+        }
+
+        @media (max-width: 540px) {
+          .cactusText {
+            display: none;
+          }
+          .cactusBtn {
+            padding: 0.7rem 0.8rem;
+            border-radius: 999px;
+          }
+        }
       `}</style>
 
       <main style={mainStyle}>
@@ -44,7 +184,8 @@ export default function Home() {
           </p>
 
           <p style={directStyle}>
-            <strong>Book Directly and Save!</strong><br />
+            <strong>Book Directly and Save!</strong>
+            <br />
             Email:{" "}
             <a href="mailto:nick.hecht@yahoo.com" style={emailStyle}>
               nick.hecht@yahoo.com
@@ -88,7 +229,8 @@ export default function Home() {
           </p>
 
           <p style={directStyle}>
-            <strong>Book Directly and Save!</strong><br />
+            <strong>Book Directly and Save!</strong>
+            <br />
             Email:{" "}
             <a href="mailto:nick.hecht@yahoo.com" style={emailStyle}>
               nick.hecht@yahoo.com
@@ -129,7 +271,7 @@ const headerText = {
   marginBottom: "2rem",
   textAlign: "center",
   fontWeight: "bold",
-  color: "#40E0D0", // turquoise
+  color: "#40e0d0", // turquoise
 };
 
 const sectionStyle = {
