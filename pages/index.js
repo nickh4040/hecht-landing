@@ -35,8 +35,9 @@ export default function Home() {
 
       {/* --- DESERT DECOR LAYER (behind everything) --- */}
       <div className="desertDecor" aria-hidden="true">
-        {/* Sun */}
+        {/* Sun (moved to LEFT corner) */}
         <div className="sun" />
+
         {/* Mountain ranges */}
         <div className="mountains m1" />
         <div className="mountains m2" />
@@ -89,11 +90,11 @@ export default function Home() {
           overflow: hidden;
         }
 
-        /* Sun */
+        /* Sun (left corner now) */
         .sun {
           position: absolute;
-          top: clamp(40px, 8vh, 100px);
-          right: clamp(40px, 8vw, 120px);
+          top: clamp(24px, 6vh, 60px);
+          left: clamp(20px, 4vw, 40px);
           width: clamp(120px, 18vw, 240px);
           height: clamp(120px, 18vw, 240px);
           border-radius: 50%;
@@ -166,7 +167,7 @@ export default function Home() {
           box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25) inset;
         }
 
-        /* Cactus base shape */
+        /* Cactus base shape for background scene */
         .cactus,
         .cactus::before,
         .cactus::after {
@@ -290,7 +291,6 @@ export default function Home() {
           background: #822e22;
           border: 1px solid #7a2a1e;
           color: #f9fafb;
-          /* clip the top edge into a mountain ridge */
           -webkit-clip-path: polygon(
             0% 40%,
             8% 28%,
@@ -326,51 +326,12 @@ export default function Home() {
           backdrop-filter: saturate(1.1);
         }
 
-        /* Responsive tweaks */
-        @media (max-width: 900px) {
-          .mountains.m1 {
-            bottom: 28vh;
-          }
-          .mountains.m2 {
-            bottom: 23vh;
-          }
-          .mountains.m3 {
-            bottom: 19vh;
-          }
-          .dunes.front {
-            height: 32vh;
-          }
-        }
-        @media (max-width: 640px) {
-          .cactusColumn {
-            opacity: 0.65; /* lighten edges on small screens */
-          }
-          .sun {
-            right: clamp(20px, 4vw, 40px);
-            top: clamp(24px, 6vh, 60px);
-          }
-        }
-      `}</style>
+        /* ---------- SAGUARO BUTTON ART ---------- */
 
-      {/* Top-right cactus button */}
-      <div className="topRightWrapper">
-        <a
-          className="cactusBtn"
-          href="https://www.airbnb.ca/s/guidebooks?refinement_paths[]=/guidebooks/3454492"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Hecht Hospitality Guide to Scottsdale"
-        >
-          <span className="cactusEmoji" aria-hidden="true">🌵</span>
-          <span className="cactusText">Hecht Hospitality Guide to Scottsdale</span>
-        </a>
-      </div>
-
-      {/* Cactus button styles */}
-      <style jsx>{`
+        /* Move the whole button down 1/2 inch to avoid clipping */
         .topRightWrapper {
           position: fixed;
-          top: 1rem;
+          top: 0.5in; /* ~0.5 inch from top */
           right: 1rem;
           z-index: 1000;
         }
@@ -379,26 +340,20 @@ export default function Home() {
           position: relative;
           display: inline-flex;
           align-items: center;
-          gap: 0.5rem;
-          padding: 0.9rem 1.1rem 0.9rem 0.95rem;
+          gap: 0.65rem;
+          padding: 0.8rem 1.05rem 0.8rem 0.8rem;
           text-decoration: none;
           font-weight: 700;
           font-size: 0.92rem;
           line-height: 1;
           color: #ffffff;
-          background: #228b22; /* cactus green */
+          background: #228b22; /* cactus green backdrop for cohesion */
           border: 2px solid #145214;
           border-radius: 28px;
           box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28);
           transition: transform 0.2s ease, box-shadow 0.2s ease;
-          background-image: radial-gradient(
-              circle at 12px 10px,
-              rgba(255, 255, 255, 0.14) 0,
-              rgba(255, 255, 255, 0.14) 2px,
-              transparent 3px
-            ),
-            linear-gradient(0deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
-          background-size: 28px 28px, auto;
+          background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
+          background-size: auto;
         }
 
         .cactusBtn:hover {
@@ -406,66 +361,94 @@ export default function Home() {
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.32);
         }
 
-        /* Left arm */
-        .cactusBtn::before {
-          content: "";
+        /* The saguaro illustration (trunk + head) */
+        .saguaro {
+          position: relative;
+          display: inline-block;
+          width: 22px;
+          height: 48px; /* trunk height */
+          border: 2px solid #145214;
+          background: #1f7f1f;
+          border-radius: 12px 12px 10px 10px; /* rounded head */
+          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
+        }
+        /* Cactus ribbing */
+        .saguaro,
+        .saguaro .arm {
+          background-image: linear-gradient(
+              90deg,
+              rgba(255, 255, 255, 0.1),
+              rgba(255, 255, 255, 0.1) 2px,
+              transparent 2px,
+              transparent 6px
+            ),
+            linear-gradient(0deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
+          background-size: 8px 100%, auto;
+        }
+
+        /* LEFT arm — goes up */
+        .saguaro .arm.left {
           position: absolute;
           left: -12px;
-          bottom: 12px;
-          width: 18px;
-          height: 34px;
-          background: #228b22;
+          bottom: 16px;
+          width: 14px;
+          height: 28px;
           border: 2px solid #145214;
           border-right: none;
-          border-radius: 14px 0 0 14px;
-          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
+          background: #1f7f1f;
+          border-radius: 12px 0 0 12px;
+          transform: rotate(-2deg);
         }
-        /* Left arm tip */
-        .cactusBtn::after {
+        .saguaro .arm.left::after {
           content: "";
           position: absolute;
-          left: -8px;
-          bottom: 34px;
+          left: -2px;
+          top: -12px;
           width: 14px;
           height: 14px;
-          background: #228b22;
+          background: #1f7f1f;
           border: 2px solid #145214;
           border-bottom: none;
-          border-radius: 14px 14px 0 0;
-          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
+          border-radius: 12px 12px 0 0; /* upturned tip */
         }
 
-        /* Right arm */
-        .cactusEmoji::before {
-          content: "";
+        /* RIGHT arm — mid height (toward the text) */
+        .saguaro .arm.right {
           position: absolute;
           right: -12px;
-          bottom: 16px;
-          width: 18px;
-          height: 30px;
-          background: #228b22;
+          bottom: 10px;
+          width: 14px;
+          height: 24px;
           border: 2px solid #145214;
           border-left: none;
-          border-radius: 0 14px 14px 0;
-          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
+          background: #1f7f1f;
+          border-radius: 0 12px 12px 0;
+          transform: rotate(2deg);
         }
-        .cactusEmoji::after {
+        .saguaro .arm.right::after {
           content: "";
           position: absolute;
-          right: -8px;
-          bottom: 40px;
+          right: -2px;
+          top: -10px;
           width: 14px;
-          height: 14px;
-          background: #228b22;
+          height: 12px;
+          background: #1f7f1f;
           border: 2px solid #145214;
           border-bottom: none;
-          border-radius: 14px 14px 0 0;
-          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
+          border-radius: 12px 12px 0 0;
         }
 
-        .cactusEmoji {
-          position: relative;
-          display: inline-flex;
+        /* Base/ground pad */
+        .saguaroBase {
+          position: absolute;
+          left: 6px;
+          bottom: -6px;
+          width: 28px;
+          height: 10px;
+          background: #7b291f;
+          border: 2px solid #4f1a13;
+          border-radius: 999px;
+          box-shadow: 0 2px 0 rgba(0, 0, 0, 0.18);
         }
 
         .cactusText {
@@ -482,6 +465,25 @@ export default function Home() {
           }
         }
       `}</style>
+
+      {/* Top-right cactus button (now a true saguaro) */}
+      <div className="topRightWrapper">
+        <a
+          className="cactusBtn"
+          href="https://www.airbnb.ca/s/guidebooks?refinement_paths[]=/guidebooks/3454492"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Hecht Hospitality Guide to Scottsdale"
+        >
+          {/* Saguaro icon */}
+          <span className="saguaro" aria-hidden="true">
+            <span className="arm left" />
+            <span className="arm right" />
+          </span>
+          <span className="saguaroBase" aria-hidden="true" />
+          <span className="cactusText">Hecht Hospitality Guide to Scottsdale</span>
+        </a>
+      </div>
 
       <main style={mainStyle}>
         {/* Big turquoise text header */}
