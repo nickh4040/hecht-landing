@@ -19,7 +19,8 @@ export default function Home() {
       `}</style>
 
       <main style={mainStyle}>
-        <h1 style={h1Style}>Hecht Hospitality</h1>
+        {/* Logo at the top */}
+        <img src="/logo.png" alt="Hecht Hospitality logo" style={logoStyle} />
 
         {/* === Property 1: The Scottsdale Oasis === */}
         <section style={sectionStyle}>
@@ -37,17 +38,32 @@ export default function Home() {
             <span style={chipStyle}>dryer</span>
           </p>
 
-          <p style={noteStyle}>See Airbnb/VRBO for current rate</p>
-
-          {/* Direct booking line */}
+          {/* Direct booking section */}
           <p style={directStyle}>
             <strong>Book Directly and Save!</strong><br />
-            Email: <a href="mailto:nick.hecht@yahoo.com" style={{ textDecoration: "underline", color: "#f9fafb" }}>nick.hecht@yahoo.com</a>
+            Email:{" "}
+            <a href="mailto:nick.hecht@yahoo.com" style={emailStyle}>
+              nick.hecht@yahoo.com
+            </a>
           </p>
 
           <div style={btnWrapper}>
-            <a href="https://airbnb.com/" target="_blank" rel="noopener noreferrer" style={btnStyle}>Airbnb →</a>
-            <a href="https://vrbo.com/" target="_blank" rel="noopener noreferrer" style={btnStyle}>VRBO →</a>
+            <a
+              href="https://airbnb.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={btnStyle}
+            >
+              Click here for rates →
+            </a>
+            <a
+              href="https://vrbo.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={btnStyle}
+            >
+              Click here for rates →
+            </a>
           </div>
         </section>
 
@@ -67,12 +83,13 @@ export default function Home() {
             <span style={chipStyle}>furnished</span>
           </p>
 
-          <p style={noteStyle}>See Furnished Finder for current rate</p>
-
-          {/* Direct booking line */}
+          {/* Direct booking section */}
           <p style={directStyle}>
             <strong>Book Directly and Save!</strong><br />
-            Email: <a href="mailto:nick.hecht@yahoo.com" style={{ textDecoration: "underline", color: "#f9fafb" }}>nick.hecht@yahoo.com</a>
+            Email:{" "}
+            <a href="mailto:nick.hecht@yahoo.com" style={emailStyle}>
+              nick.hecht@yahoo.com
+            </a>
           </p>
 
           <div style={btnWrapper}>
@@ -82,7 +99,7 @@ export default function Home() {
               rel="noopener noreferrer"
               style={btnStyle}
             >
-              Furnished Finder →
+              Click here for rates →
             </a>
           </div>
         </section>
@@ -99,10 +116,10 @@ const mainStyle = {
   minHeight: "100vh",
 };
 
-const h1Style = {
-  fontSize: "2rem",
-  marginBottom: "2rem",
-  textAlign: "center",
+const logoStyle = {
+  display: "block",
+  margin: "0 auto 2rem",
+  width: "120px",   // adjust as needed
 };
 
 const sectionStyle = {
@@ -140,15 +157,17 @@ const chipStyle = {
   backgroundColor: "#0f172a",
 };
 
-const noteStyle = { margin: "0 0 1rem", color: "#94a3b8" };
-
 const directStyle = {
   margin: "0 0 1rem",
   color: "#f9fafb",
-  textAlign: "center",
 };
 
-const btnWrapper = { display: "flex", gap: ".75rem", flexWrap: "wrap", justifyContent: "center" };
+const emailStyle = {
+  textDecoration: "underline",
+  color: "#f9fafb",
+};
+
+const btnWrapper = { display: "flex", gap: ".75rem", flexWrap: "wrap" };
 
 const btnStyle = {
   textDecoration: "none",
