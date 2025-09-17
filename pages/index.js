@@ -15,7 +15,7 @@ export default function Home() {
       <main style={{ maxWidth: "1000px", margin: "0 auto", padding: "2rem" }}>
         <h1 style={{ fontSize: "2rem", marginBottom: "2rem" }}>Hecht Hospitality</h1>
 
-        {/* Property 1: The Scottsdale Oasis */}
+        {/* === Property 1: The Scottsdale Oasis === */}
         <section style={sectionStyle}>
           <img
             src="/d4ccc866-ea30-4579-ab59-ea552fd99eac.jpg"
@@ -53,7 +53,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Property 2: The Sunrise Condo */}
+        {/* === Property 2: The Sunrise Condo === */}
         <section style={sectionStyle}>
           <img
             src="/581506_1_51205717-full.avif"
