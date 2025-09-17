@@ -26,13 +26,292 @@ export default function Home() {
           color: #f9fafb;
           font-family: -apple-system, Inter, Segoe UI, Roboto, Helvetica, Arial,
             sans-serif;
+          overflow-x: hidden;
         }
         a {
           color: inherit;
         }
       `}</style>
 
-      {/* Top-right cactus button */}
+      {/* --- DESERT DECOR LAYER (behind everything) --- */}
+      <div className="desertDecor" aria-hidden="true">
+        {/* Sun */}
+        <div className="sun" />
+        {/* Mountain ranges */}
+        <div className="mountains m1" />
+        <div className="mountains m2" />
+        <div className="mountains m3" />
+
+        {/* Side cactus columns */}
+        <div className="cactusColumn left">
+          {Array.from({ length: 9 }).map((_, i) => (
+            <div key={`lc-${i}`} className={`cactus small s${(i % 6) + 1}`} />
+          ))}
+        </div>
+        <div className="cactusColumn right">
+          {Array.from({ length: 9 }).map((_, i) => (
+            <div key={`rc-${i}`} className={`cactus small s${(i % 6) + 1}`} />
+          ))}
+        </div>
+
+        {/* Bottom cactus field */}
+        <div className="cactusField">
+          {Array.from({ length: 22 }).map((_, i) => (
+            <div
+              key={`bf-${i}`}
+              className={`cactus ${i % 3 === 0 ? "tall" : i % 3 === 1 ? "medium" : "short"}`}
+              style={{
+                left: `calc(${(i / 21) * 100}% + ${(i % 5) * 6 - 12}px)`,
+                transform: `translateY(${(i % 7) * 2 - 6}px) scale(${
+                  0.9 + ((i * 7) % 10) / 30
+                })`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Sand dunes */}
+        <div className="dunes back" />
+        <div className="dunes mid" />
+        <div className="dunes front" />
+      </div>
+
+      {/* --- DESERT DECOR STYLES --- */}
+      <style jsx>{`
+        /* Utilities */
+        .desertDecor {
+          position: fixed;
+          inset: 0;
+          z-index: 0; /* behind content */
+          pointer-events: none; /* never block clicks */
+          overflow: hidden;
+        }
+
+        /* Sun */
+        .sun {
+          position: absolute;
+          top: clamp(40px, 8vh, 100px);
+          right: clamp(40px, 8vw, 120px);
+          width: clamp(120px, 18vw, 240px);
+          height: clamp(120px, 18vw, 240px);
+          border-radius: 50%;
+          background: radial-gradient(
+            circle at 50% 50%,
+            #ffd08a 0%,
+            #ffbd66 45%,
+            #f39a4b 70%,
+            rgba(243, 154, 75, 0) 72%
+          );
+          filter: blur(0.3px);
+          opacity: 0.85;
+        }
+
+        /* Mountains (layered silhouettes using SVG data URIs) */
+        .mountains {
+          position: absolute;
+          left: -5vw;
+          right: -5vw;
+          height: 30vh;
+          background-repeat: repeat-x;
+          background-size: auto 100%;
+          opacity: 0.65;
+          filter: saturate(0.92);
+        }
+        .mountains.m1 {
+          bottom: 32vh;
+          opacity: 0.35;
+          background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 240 L120 180 L240 220 L360 150 L480 210 L600 160 L720 220 L840 170 L960 210 L1080 185 L1200 220 L1200 300 L0 300 Z' fill='%23833a2e'/></svg>");
+        }
+        .mountains.m2 {
+          bottom: 26vh;
+          opacity: 0.5;
+          background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 230 L100 200 L200 230 L300 180 L420 210 L540 170 L660 230 L780 190 L900 210 L1020 200 L1200 230 L1200 300 L0 300 Z' fill='%237f3529'/></svg>");
+        }
+        .mountains.m3 {
+          bottom: 22vh;
+          opacity: 0.6;
+          background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 220 L120 210 L240 220 L360 200 L480 218 L600 205 L720 220 L840 210 L960 220 L1080 208 L1200 220 L1200 300 L0 300 Z' fill='%23712f24'/></svg>");
+        }
+
+        /* Dunes */
+        .dunes {
+          position: absolute;
+          left: -5vw;
+          right: -5vw;
+          bottom: 0;
+          height: 34vh;
+          border-top-left-radius: 35% 30%;
+          border-top-right-radius: 35% 30%;
+          mask-image: radial-gradient(160% 60% at 50% 100%, black 55%, transparent 90%);
+        }
+        .dunes.back {
+          height: 26vh;
+          bottom: 0;
+          background: linear-gradient(#8b2f24, #7b291f);
+          opacity: 0.75;
+          filter: blur(0.4px);
+        }
+        .dunes.mid {
+          height: 30vh;
+          bottom: -1vh;
+          background: linear-gradient(#9b3a2a, #8a3024);
+          opacity: 0.85;
+        }
+        .dunes.front {
+          height: 34vh;
+          bottom: -2vh;
+          background: linear-gradient(#b24533, #9a3628);
+          box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25) inset;
+        }
+
+        /* Cactus base shape via mask + background (fast to render & easy to recolor) */
+        .cactus,
+        .cactus::before,
+        .cactus::after {
+          background: #1f7f1f;
+          border: 2px solid #145214;
+          box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+        }
+        .cactus {
+          position: absolute;
+          bottom: 8vh;
+          width: 20px;
+          height: 70px;
+          border-radius: 12px;
+          transform-origin: bottom center;
+          filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.12));
+        }
+        .cactus.tall {
+          height: 110px;
+          width: 24px;
+        }
+        .cactus.medium {
+          height: 90px;
+          width: 22px;
+        }
+        .cactus.short {
+          height: 70px;
+          width: 20px;
+        }
+
+        /* Arms */
+        .cactus::before,
+        .cactus::after {
+          content: "";
+          position: absolute;
+          width: 14px;
+          height: 40%;
+          border-radius: 12px;
+          top: 22%;
+        }
+        .cactus::before {
+          left: -12px;
+        }
+        .cactus::after {
+          right: -12px;
+          height: 34%;
+          top: 32%;
+        }
+
+        /* Subtle ribbing highlights */
+        .cactus,
+        .cactus::before,
+        .cactus::after {
+          background-image: linear-gradient(
+              90deg,
+              rgba(255, 255, 255, 0.09),
+              rgba(255, 255, 255, 0.09) 2px,
+              transparent 2px,
+              transparent 6px
+            ),
+            linear-gradient(0deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
+          background-size: 8px 100%, auto;
+        }
+
+        /* Side columns of cacti */
+        .cactusColumn {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: clamp(46px, 6vw, 72px);
+          display: grid;
+          grid-template-rows: repeat(12, 1fr);
+          align-items: end;
+          gap: 2vh;
+          padding-bottom: 8vh;
+          opacity: 0.92;
+        }
+        .cactusColumn.left {
+          left: max(0px, env(safe-area-inset-left));
+        }
+        .cactusColumn.right {
+          right: max(0px, env(safe-area-inset-right));
+        }
+        .cactusColumn .cactus.small {
+          position: relative;
+          bottom: 0;
+          margin: 0 auto;
+          transform: translateY(0) scale(0.9);
+          height: 62px;
+          width: 18px;
+        }
+        .cactusColumn .cactus.small.s1 {
+          transform: translateY(0) scale(0.85) rotate(-2deg);
+        }
+        .cactusColumn .cactus.small.s2 {
+          transform: translateY(4px) scale(0.95) rotate(1deg);
+        }
+        .cactusColumn .cactus.small.s3 {
+          transform: translateY(-2px) scale(0.9) rotate(2deg);
+        }
+        .cactusColumn .cactus.small.s4 {
+          transform: translateY(3px) scale(0.92) rotate(-1deg);
+        }
+        .cactusColumn .cactus.small.s5 {
+          transform: translateY(1px) scale(0.88) rotate(1deg);
+        }
+        .cactusColumn .cactus.small.s6 {
+          transform: translateY(-1px) scale(0.9) rotate(-2deg);
+        }
+
+        /* Bottom field spread across width */
+        .cactusField {
+          position: absolute;
+          left: -2vw;
+          right: -2vw;
+          bottom: 0;
+          height: 34vh;
+          pointer-events: none;
+          mix-blend-mode: normal;
+        }
+
+        /* Responsive tweaks so content never feels crowded */
+        @media (max-width: 900px) {
+          .mountains.m1 {
+            bottom: 28vh;
+          }
+          .mountains.m2 {
+            bottom: 23vh;
+          }
+          .mountains.m3 {
+            bottom: 19vh;
+          }
+          .dunes.front {
+            height: 32vh;
+          }
+        }
+        @media (max-width: 640px) {
+          .cactusColumn {
+            opacity: 0.65; /* lighten edges on small screens */
+          }
+          .sun {
+            right: clamp(20px, 4vw, 40px);
+            top: clamp(24px, 6vh, 60px);
+          }
+        }
+      `}</style>
+
+      {/* Top-right cactus button (unchanged) */}
       <div className="topRightWrapper">
         <a
           className="cactusBtn"
@@ -260,6 +539,8 @@ export default function Home() {
 
 /* ---- Shared styles ---- */
 const mainStyle = {
+  position: "relative",
+  zIndex: 1, // above decor
   maxWidth: "1000px",
   margin: "0 auto",
   padding: "2rem",
@@ -280,6 +561,7 @@ const sectionStyle = {
   border: "1px solid #7a2a1e",
   borderRadius: "1rem",
   backgroundColor: "#822e22", // darker card bg
+  backdropFilter: "saturate(1.1)",
 };
 
 const imgStyle = {
