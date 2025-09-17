@@ -14,12 +14,17 @@ export default function Home() {
 
       <style jsx global>{`
         html, body, #__next { height: 100%; }
-        body { margin: 0; background: #0a1f44; color: #f9fafb; font-family: -apple-system, Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+        body { 
+          margin: 0; 
+          background: #A33C2E; /* Sedona red */
+          color: #f9fafb; 
+          font-family: -apple-system, Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif; 
+        }
         a { color: inherit; }
       `}</style>
 
       <main style={mainStyle}>
-        {/* Big white text header */}
+        {/* Big turquoise text header */}
         <h1 style={headerText}>Hecht Hospitality</h1>
 
         {/* === Property 1: The Scottsdale Oasis === */}
@@ -38,7 +43,6 @@ export default function Home() {
             <span style={chipStyle}>dryer</span>
           </p>
 
-          {/* Direct booking section */}
           <p style={directStyle}>
             <strong>Book Directly and Save!</strong><br />
             Email:{" "}
@@ -49,7 +53,7 @@ export default function Home() {
 
           <div style={btnWrapper}>
             <a
-              href="https://airbnb.com/"
+              href="https://www.airbnb.ca/rooms/52926264?check_in=2025-09-25&check_out=2025-09-28&guests=1&adults=1&s=67&unique_share_id=37fe3738-ded1-40ba-adf4-de40bdde6cc5&source_impression_id=p3_1758142493_P3hCZaAuclUGDHhD&_set_bev_on_new_domain=1756964426_EAODkzODM4ZGRjZT&locale=en"
               target="_blank"
               rel="noopener noreferrer"
               style={btnStyle}
@@ -57,7 +61,7 @@ export default function Home() {
               Airbnb Rates →
             </a>
             <a
-              href="https://vrbo.com/"
+              href="https://www.vrbo.com/2747791?chkin=2025-10-1&chkout=2025-10-2&rm1=a2&regionId=9829&searchId=2c82cc2a-7eac-42d4-92c4-256890a55860"
               target="_blank"
               rel="noopener noreferrer"
               style={btnStyle}
@@ -83,7 +87,6 @@ export default function Home() {
             <span style={chipStyle}>furnished</span>
           </p>
 
-          {/* Direct booking section */}
           <p style={directStyle}>
             <strong>Book Directly and Save!</strong><br />
             Email:{" "}
@@ -122,19 +125,19 @@ const mainStyle = {
 };
 
 const headerText = {
-  fontSize: "3rem",   // bigger text
+  fontSize: "3rem",
   marginBottom: "2rem",
   textAlign: "center",
   fontWeight: "bold",
-  color: "#ffffff",
+  color: "#40E0D0", // turquoise
 };
 
 const sectionStyle = {
   margin: "2rem 0",
   padding: "1.25rem",
-  border: "1px solid #334155",
+  border: "1px solid #7a2a1e",
   borderRadius: "1rem",
-  backgroundColor: "#1e293b",
+  backgroundColor: "#822e22", // darker card bg
 };
 
 const imgStyle = {
@@ -147,7 +150,7 @@ const imgStyle = {
 };
 
 const titleStyle = { fontSize: "1.5rem", marginBottom: ".25rem" };
-const subtitleStyle = { margin: ".25rem 0 1rem", color: "#cbd5e1" };
+const subtitleStyle = { margin: ".25rem 0 1rem", color: "#f5d0c5" };
 
 const chipWrapper = {
   display: "flex",
@@ -158,10 +161,10 @@ const chipWrapper = {
 
 const chipStyle = {
   padding: ".25rem .6rem",
-  border: "1px solid #64748b",
+  border: "1px solid #f5a09a",
   borderRadius: "999px",
   fontSize: ".9rem",
-  backgroundColor: "#0f172a",
+  backgroundColor: "#661f16",
 };
 
 const directStyle = {
