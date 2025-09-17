@@ -33,18 +33,18 @@ export default function Home() {
         }
       `}</style>
 
-      {/* --- DESERT DECOR --- */}
+      {/* Background decor (behind all content) */}
       <div className="desertDecor" aria-hidden="true">
-        {/* Sun + small mountain ridge below it */}
+        {/* Sun + small ridge beneath it */}
         <div className="sun" />
         <div className="sunMountain" />
 
-        {/* Mountain layers */}
+        {/* Layered mountain silhouettes */}
         <div className="mountains m1" />
         <div className="mountains m2" />
         <div className="mountains m3" />
 
-        {/* Side cactus columns */}
+        {/* Cacti along left/right edges */}
         <div className="cactusColumn left">
           {Array.from({ length: 11 }).map((_, i) => (
             <div key={`lc-${i}`} className={`cactus small s${(i % 6) + 1}`} />
@@ -56,7 +56,7 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Bottom cactus field */}
+        {/* Cacti along the bottom */}
         <div className="cactusField">
           {Array.from({ length: 28 }).map((_, i) => (
             <div
@@ -74,23 +74,38 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Dunes */}
+        {/* Sand dunes */}
         <div className="dunes back" />
         <div className="dunes mid" />
         <div className="dunes front" />
       </div>
 
-      {/* --- DECOR, CARDS & GUIDE BUTTON STYLES --- */}
+      {/* Guide button — single instance, top-right */}
+      <div className="guideWrapper">
+        <a
+          className="cactusBtn"
+          href="https://www.airbnb.ca/s/guidebooks?refinement_paths[]=/guidebooks/3454492"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Hecht Hospitality Guide to Scottsdale"
+        >
+          <span className="cactusEmoji" aria-hidden="true">🌵</span>
+          <span className="cactusText">Hecht Hospitality Guide to Scottsdale</span>
+        </a>
+      </div>
+
+      {/* Component-scoped styles (everything visual lives here) */}
       <style jsx>{`
+        /* Decor container */
         .desertDecor {
           position: fixed;
           inset: 0;
-          z-index: 0; /* behind content */
+          z-index: 0; /* stay behind content */
           pointer-events: none;
           overflow: hidden;
         }
 
-        /* Sun in LEFT corner */
+        /* Sun (top-left) */
         .sun {
           position: absolute;
           top: clamp(24px, 6vh, 60px);
@@ -105,14 +120,13 @@ export default function Home() {
             #f39a4b 70%,
             rgba(243, 154, 75, 0) 72%
           );
-          filter: blur(0.3px);
           opacity: 0.85;
         }
 
         /* Small ridge under the sun */
         .sunMountain {
           position: absolute;
-          top: clamp(160px, 18vh, 220px); /* sits below the sun */
+          top: clamp(160px, 18vh, 220px);
           left: 0;
           width: 46vw;
           height: clamp(90px, 12vh, 140px);
@@ -122,7 +136,7 @@ export default function Home() {
           background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 240 L120 210 L240 235 L360 200 L460 225 L560 188 L680 230 L800 205 L920 225 L1040 212 L1200 232 L1200 300 L0 300 Z' fill='%23873a2e'/></svg>");
         }
 
-        /* Mountains (layered silhouettes using SVG data URIs) */
+        /* Mountain bands */
         .mountains {
           position: absolute;
           left: -5vw;
@@ -130,8 +144,6 @@ export default function Home() {
           height: 30vh;
           background-repeat: repeat-x;
           background-size: auto 100%;
-          opacity: 0.65;
-          filter: saturate(0.92);
         }
         .mountains.m1 {
           bottom: 32vh;
@@ -165,7 +177,6 @@ export default function Home() {
           bottom: 0;
           background: linear-gradient(#8b2f24, #7b291f);
           opacity: 0.75;
-          filter: blur(0.4px);
         }
         .dunes.mid {
           height: 30vh;
@@ -180,7 +191,7 @@ export default function Home() {
           box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25) inset;
         }
 
-        /* Decorative cacti (background) */
+        /* Decorative cacti (edges + bottom) */
         .cactus,
         .cactus::before,
         .cactus::after {
@@ -195,7 +206,6 @@ export default function Home() {
           height: 70px;
           border-radius: 12px;
           transform-origin: bottom center;
-          filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.12));
         }
         .cactus.tall { height: 110px; width: 24px; }
         .cactus.medium { height: 90px; width: 22px; }
@@ -224,8 +234,6 @@ export default function Home() {
             linear-gradient(0deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
           background-size: 8px 100%, auto;
         }
-
-        /* Side columns of cacti */
         .cactusColumn {
           position: absolute;
           top: 0;
@@ -240,8 +248,6 @@ export default function Home() {
         }
         .cactusColumn.left  { left: max(0px, env(safe-area-inset-left)); }
         .cactusColumn.right { right: max(0px, env(safe-area-inset-right)); }
-
-        /* Bottom field spread across width */
         .cactusField {
           position: absolute;
           left: -2vw;
@@ -249,10 +255,9 @@ export default function Home() {
           bottom: 0;
           height: 34vh;
           pointer-events: none;
-          mix-blend-mode: normal;
         }
 
-        /* Mountain-shaped cards */
+        /* Mountain-shaped property cards */
         .mountainCard {
           position: relative;
           padding: 1.25rem;
@@ -291,19 +296,17 @@ export default function Home() {
           );
           border-bottom-left-radius: 1rem;
           border-bottom-right-radius: 1rem;
-          backdrop-filter: saturate(1.1);
-          text-align: center; /* center all content inside */
+          text-align: center;
         }
 
-        /* ---------- GUIDE BUTTON (top-right, bigger cactus-green text) ---------- */
+        /* Guide button (top-right, bigger cactus-green text) */
         .guideWrapper {
           position: fixed;
-          top: 0.7in;   /* slightly down so it never clips */
-          right: 1rem;  /* top-right corner */
+          top: 0.7in; /* slightly down to avoid clipping */
+          right: 1rem;
           z-index: 1000;
           pointer-events: auto;
         }
-
         .cactusBtn {
           position: relative;
           display: inline-flex;
@@ -312,7 +315,7 @@ export default function Home() {
           padding: 1rem 1.25rem;
           text-decoration: none;
           font-weight: 800;
-          font-size: 1.15rem; /* bigger font */
+          font-size: 1.15rem; /* larger */
           line-height: 1.2;
           color: #228b22;      /* cactus green text */
           background: #ffffff; /* white background so green pops */
@@ -321,20 +324,19 @@ export default function Home() {
           box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28);
           transition: transform 0.2s ease, box-shadow 0.2s ease;
           background-image: radial-gradient(
-              circle at 12px 10px,
-              rgba(0, 0, 0, 0.05) 0,
-              rgba(0, 0, 0, 0.05) 2px,
-              transparent 3px
-            );
+            circle at 12px 10px,
+            rgba(0, 0, 0, 0.05) 0,
+            rgba(0, 0, 0, 0.05) 2px,
+            transparent 3px
+          );
           background-size: 28px 28px;
         }
-
         .cactusBtn:hover {
           transform: translateY(-1px) scale(1.03);
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.32);
         }
 
-        /* Arms for the cactus button (left + right) */
+        /* "Cactus arms" for the button */
         .cactusEmoji {
           position: relative;
           display: inline-flex;
@@ -402,24 +404,11 @@ export default function Home() {
         }
       `}</style>
 
-      {/* Guide button — top right */}
-      <div className="guideWrapper">
-        <a
-          className="cactusBtn"
-          href="https://www.airbnb.ca/s/guidebooks?refinement_paths[]=/guidebooks/3454492"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Hecht Hospitality Guide to Scottsdale"
-        >
-          <span className="cactusEmoji" aria-hidden="true">🌵</span>
-          <span className="cactusText">Hecht Hospitality Guide to Scottsdale</span>
-        </a>
-      </div>
-
+      {/* Content */}
       <main style={mainStyle}>
         <h1 style={headerText}>Hecht Hospitality</h1>
 
-        {/* === Property 1 === */}
+        {/* Property 1 */}
         <section style={sectionWrapper}>
           <div className="mountainCard">
             <img
@@ -429,11 +418,13 @@ export default function Home() {
             />
             <h3 style={titleStyle}>The Scottsdale Oasis</h3>
             <p style={subtitleStyle}>Old Town Scottsdale • Sleeps 6</p>
+
             <p style={chipWrapper}>
               <span style={chipStyle}>pool</span>
               <span style={chipStyle}>washer</span>
               <span style={chipStyle}>dryer</span>
             </p>
+
             <p style={directStyle}>
               <strong>Book Directly and Save!</strong>
               <br />
@@ -442,18 +433,29 @@ export default function Home() {
                 nick.hecht@yahoo.com
               </a>
             </p>
+
             <div style={btnWrapper}>
-              <a href="https://www.airbnb.ca/rooms/52926264" style={btnStyle}>
+              <a
+                href="https://www.airbnb.ca/rooms/52926264"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={btnStyle}
+              >
                 Airbnb Rates →
               </a>
-              <a href="https://www.vrbo.com/2747791" style={btnStyle}>
+              <a
+                href="https://www.vrbo.com/2747791"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={btnStyle}
+              >
                 VRBO Rates →
               </a>
             </div>
           </div>
         </section>
 
-        {/* === Property 2 === */}
+        {/* Property 2 */}
         <section style={sectionWrapper}>
           <div className="mountainCard">
             <img
@@ -463,11 +465,13 @@ export default function Home() {
             />
             <h3 style={titleStyle}>The Sunrise Condo</h3>
             <p style={subtitleStyle}>Scottsdale • Sleeps 2</p>
+
             <p style={chipWrapper}>
               <span style={chipStyle}>wifi</span>
               <span style={chipStyle}>parking</span>
               <span style={chipStyle}>furnished</span>
             </p>
+
             <p style={directStyle}>
               <strong>Book Directly and Save!</strong>
               <br />
@@ -476,14 +480,21 @@ export default function Home() {
                 nick.hecht@yahoo.com
               </a>
             </p>
+
             <div style={btnWrapper}>
-              <a href="https://www.furnishedfinder.com/property/581506_1" style={btnStyle}>
+              <a
+                href="https://www.furnishedfinder.com/property/581506_1"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={btnStyle}
+              >
                 Furnished Finder Rates →
               </a>
             </div>
           </div>
         </section>
 
+        {/* Footer */}
         <footer style={footerStyle}>
           <img src="/logo.png" alt="Hecht Hospitality logo" style={logoStyle} />
         </footer>
@@ -492,7 +503,7 @@ export default function Home() {
   );
 }
 
-/* ---- Shared styles ---- */
+/* ---- JS style objects ---- */
 const mainStyle = {
   position: "relative",
   zIndex: 1, // above decor
