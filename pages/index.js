@@ -39,6 +39,12 @@ export default function Home() {
 
           <p style={noteStyle}>See Airbnb/VRBO for current rate</p>
 
+          {/* Direct booking line */}
+          <p style={directStyle}>
+            <strong>Book Directly and Save!</strong><br />
+            Email: <a href="mailto:nick.hecht@yahoo.com" style={{ textDecoration: "underline", color: "#f9fafb" }}>nick.hecht@yahoo.com</a>
+          </p>
+
           <div style={btnWrapper}>
             <a href="https://airbnb.com/" target="_blank" rel="noopener noreferrer" style={btnStyle}>Airbnb →</a>
             <a href="https://vrbo.com/" target="_blank" rel="noopener noreferrer" style={btnStyle}>VRBO →</a>
@@ -62,6 +68,12 @@ export default function Home() {
           </p>
 
           <p style={noteStyle}>See Furnished Finder for current rate</p>
+
+          {/* Direct booking line */}
+          <p style={directStyle}>
+            <strong>Book Directly and Save!</strong><br />
+            Email: <a href="mailto:nick.hecht@yahoo.com" style={{ textDecoration: "underline", color: "#f9fafb" }}>nick.hecht@yahoo.com</a>
+          </p>
 
           <div style={btnWrapper}>
             <a
@@ -103,8 +115,8 @@ const sectionStyle = {
 
 const imgStyle = {
   width: "50%",
-  height: "300px",          // fixed height
-  objectFit: "cover",       // crop overflow
+  height: "300px",
+  objectFit: "cover",
   borderRadius: "0.75rem",
   margin: "0 auto 1rem",
   display: "block",
@@ -130,7 +142,13 @@ const chipStyle = {
 
 const noteStyle = { margin: "0 0 1rem", color: "#94a3b8" };
 
-const btnWrapper = { display: "flex", gap: ".75rem", flexWrap: "wrap" };
+const directStyle = {
+  margin: "0 0 1rem",
+  color: "#f9fafb",
+  textAlign: "center",
+};
+
+const btnWrapper = { display: "flex", gap: ".75rem", flexWrap: "wrap", justifyContent: "center" };
 
 const btnStyle = {
   textDecoration: "none",
