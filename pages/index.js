@@ -12,8 +12,8 @@ export default function Home() {
         />
       </Head>
 
-      <main style={{ maxWidth: "1000px", margin: "0 auto", padding: "2rem" }}>
-        <h1 style={{ fontSize: "2rem", marginBottom: "2rem" }}>Hecht Hospitality</h1>
+      <main style={mainStyle}>
+        <h1 style={h1Style}>Hecht Hospitality</h1>
 
         {/* === Property 1: The Scottsdale Oasis === */}
         <section style={sectionStyle}>
@@ -88,22 +88,38 @@ export default function Home() {
 }
 
 /* ---- Shared styles ---- */
+const mainStyle = {
+  maxWidth: "1000px",
+  margin: "0 auto",
+  padding: "2rem",
+  backgroundColor: "#0a1f44", // navy blue
+  color: "#f9fafb", // light text
+  minHeight: "100vh",
+};
+
+const h1Style = {
+  fontSize: "2rem",
+  marginBottom: "2rem",
+  textAlign: "center",
+};
+
 const sectionStyle = {
   margin: "2rem 0",
   padding: "1.25rem",
-  border: "1px solid #e5e7eb",
+  border: "1px solid #334155",
   borderRadius: "1rem",
+  backgroundColor: "#1e293b", // dark card bg
 };
 
 const imgStyle = {
-  width: "100%",
+  width: "50%", // half size
   borderRadius: "0.75rem",
-  marginBottom: "1rem",
+  margin: "0 auto 1rem",
   display: "block",
 };
 
 const titleStyle = { fontSize: "1.5rem", marginBottom: ".25rem" };
-const subtitleStyle = { margin: ".25rem 0 1rem", color: "#374151" };
+const subtitleStyle = { margin: ".25rem 0 1rem", color: "#cbd5e1" };
 
 const chipWrapper = {
   display: "flex",
@@ -114,19 +130,21 @@ const chipWrapper = {
 
 const chipStyle = {
   padding: ".25rem .6rem",
-  border: "1px solid #d1d5db",
+  border: "1px solid #64748b",
   borderRadius: "999px",
   fontSize: ".9rem",
+  backgroundColor: "#0f172a",
 };
 
-const noteStyle = { margin: "0 0 1rem", color: "#6b7280" };
+const noteStyle = { margin: "0 0 1rem", color: "#94a3b8" };
 
 const btnWrapper = { display: "flex", gap: ".75rem", flexWrap: "wrap" };
 
 const btnStyle = {
   textDecoration: "none",
   padding: ".6rem 1rem",
-  border: "1px solid #111827",
+  border: "1px solid #f9fafb",
   borderRadius: ".75rem",
   fontWeight: 600,
+  color: "#f9fafb",
 };
