@@ -44,24 +44,26 @@ export default function Home() {
 
         {/* Side cactus columns */}
         <div className="cactusColumn left">
-          {Array.from({ length: 9 }).map((_, i) => (
+          {Array.from({ length: 11 }).map((_, i) => (
             <div key={`lc-${i}`} className={`cactus small s${(i % 6) + 1}`} />
           ))}
         </div>
         <div className="cactusColumn right">
-          {Array.from({ length: 9 }).map((_, i) => (
+          {Array.from({ length: 11 }).map((_, i) => (
             <div key={`rc-${i}`} className={`cactus small s${(i % 6) + 1}`} />
           ))}
         </div>
 
         {/* Bottom cactus field */}
         <div className="cactusField">
-          {Array.from({ length: 22 }).map((_, i) => (
+          {Array.from({ length: 28 }).map((_, i) => (
             <div
               key={`bf-${i}`}
-              className={`cactus ${i % 3 === 0 ? "tall" : i % 3 === 1 ? "medium" : "short"}`}
+              className={`cactus ${
+                i % 3 === 0 ? "tall" : i % 3 === 1 ? "medium" : "short"
+              }`}
               style={{
-                left: `calc(${(i / 21) * 100}% + ${(i % 5) * 6 - 12}px)`,
+                left: `calc(${(i / 27) * 100}% + ${(i % 5) * 6 - 12}px)`,
                 transform: `translateY(${(i % 7) * 2 - 6}px) scale(${
                   0.9 + ((i * 7) % 10) / 30
                 })`,
@@ -76,7 +78,7 @@ export default function Home() {
         <div className="dunes front" />
       </div>
 
-      {/* --- DESERT DECOR STYLES --- */}
+      {/* --- DESERT DECOR & MOUNTAIN CARD STYLES --- */}
       <style jsx>{`
         /* Utilities */
         .desertDecor {
@@ -164,7 +166,7 @@ export default function Home() {
           box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25) inset;
         }
 
-        /* Cactus base shape via mask + background (fast to render & easy to recolor) */
+        /* Cactus base shape */
         .cactus,
         .cactus::before,
         .cactus::after {
@@ -193,8 +195,6 @@ export default function Home() {
           height: 70px;
           width: 20px;
         }
-
-        /* Arms */
         .cactus::before,
         .cactus::after {
           content: "";
@@ -212,8 +212,6 @@ export default function Home() {
           height: 34%;
           top: 32%;
         }
-
-        /* Subtle ribbing highlights */
         .cactus,
         .cactus::before,
         .cactus::after {
@@ -285,7 +283,50 @@ export default function Home() {
           mix-blend-mode: normal;
         }
 
-        /* Responsive tweaks so content never feels crowded */
+        /* Mountain-shaped cards */
+        .mountainCard {
+          position: relative;
+          padding: 1.25rem;
+          background: #822e22;
+          border: 1px solid #7a2a1e;
+          color: #f9fafb;
+          /* clip the top edge into a mountain ridge */
+          -webkit-clip-path: polygon(
+            0% 40%,
+            8% 28%,
+            18% 46%,
+            28% 22%,
+            38% 38%,
+            50% 16%,
+            60% 36%,
+            70% 24%,
+            82% 42%,
+            92% 30%,
+            100% 44%,
+            100% 100%,
+            0% 100%
+          );
+          clip-path: polygon(
+            0% 40%,
+            8% 28%,
+            18% 46%,
+            28% 22%,
+            38% 38%,
+            50% 16%,
+            60% 36%,
+            70% 24%,
+            82% 42%,
+            92% 30%,
+            100% 44%,
+            100% 100%,
+            0% 100%
+          );
+          border-bottom-left-radius: 1rem;
+          border-bottom-right-radius: 1rem;
+          backdrop-filter: saturate(1.1);
+        }
+
+        /* Responsive tweaks */
         @media (max-width: 900px) {
           .mountains.m1 {
             bottom: 28vh;
@@ -311,7 +352,7 @@ export default function Home() {
         }
       `}</style>
 
-      {/* Top-right cactus button (unchanged) */}
+      {/* Top-right cactus button */}
       <div className="topRightWrapper">
         <a
           className="cactusBtn"
@@ -447,84 +488,88 @@ export default function Home() {
         <h1 style={headerText}>Hecht Hospitality</h1>
 
         {/* === Property 1: The Scottsdale Oasis === */}
-        <section style={sectionStyle}>
-          <img
-            src="/d4ccc866-ea30-4579-ab59-ea552fd99eac.jpg"
-            alt="The Scottsdale Oasis living room"
-            style={imgStyle}
-          />
-          <h3 style={titleStyle}>The Scottsdale Oasis</h3>
-          <p style={subtitleStyle}>Old Town Scottsdale • Sleeps 6</p>
+        <section style={sectionWrapper}>
+          <div className="mountainCard">
+            <img
+              src="/d4ccc866-ea30-4579-ab59-ea552fd99eac.jpg"
+              alt="The Scottsdale Oasis living room"
+              style={imgStyle}
+            />
+            <h3 style={titleStyle}>The Scottsdale Oasis</h3>
+            <p style={subtitleStyle}>Old Town Scottsdale • Sleeps 6</p>
 
-          <p style={chipWrapper}>
-            <span style={chipStyle}>pool</span>
-            <span style={chipStyle}>washer</span>
-            <span style={chipStyle}>dryer</span>
-          </p>
+            <p style={chipWrapper}>
+              <span style={chipStyle}>pool</span>
+              <span style={chipStyle}>washer</span>
+              <span style={chipStyle}>dryer</span>
+            </p>
 
-          <p style={directStyle}>
-            <strong>Book Directly and Save!</strong>
-            <br />
-            Email:{" "}
-            <a href="mailto:nick.hecht@yahoo.com" style={emailStyle}>
-              nick.hecht@yahoo.com
-            </a>
-          </p>
+            <p style={directStyle}>
+              <strong>Book Directly and Save!</strong>
+              <br />
+              Email:{" "}
+              <a href="mailto:nick.hecht@yahoo.com" style={emailStyle}>
+                nick.hecht@yahoo.com
+              </a>
+            </p>
 
-          <div style={btnWrapper}>
-            <a
-              href="https://www.airbnb.ca/rooms/52926264?check_in=2025-09-25&check_out=2025-09-28&guests=1&adults=1&s=67&unique_share_id=37fe3738-ded1-40ba-adf4-de40bdde6cc5&source_impression_id=p3_1758142493_P3hCZaAuclUGDHhD&_set_bev_on_new_domain=1756964426_EAODkzODM4ZGRjZT&locale=en"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={btnStyle}
-            >
-              Airbnb Rates →
-            </a>
-            <a
-              href="https://www.vrbo.com/2747791?chkin=2025-10-1&chkout=2025-10-2&rm1=a2&regionId=9829&searchId=2c82cc2a-7eac-42d4-92c4-256890a55860"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={btnStyle}
-            >
-              VRBO Rates →
-            </a>
+            <div style={btnWrapper}>
+              <a
+                href="https://www.airbnb.ca/rooms/52926264?check_in=2025-09-25&check_out=2025-09-28&guests=1&adults=1&s=67&unique_share_id=37fe3738-ded1-40ba-adf4-de40bdde6cc5&source_impression_id=p3_1758142493_P3hCZaAuclUGDHhD&_set_bev_on_new_domain=1756964426_EAODkzODM4ZGRjZT&locale=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={btnStyle}
+              >
+                Airbnb Rates →
+              </a>
+              <a
+                href="https://www.vrbo.com/2747791?chkin=2025-10-1&chkout=2025-10-2&rm1=a2&regionId=9829&searchId=2c82cc2a-7eac-42d4-92c4-256890a55860"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={btnStyle}
+              >
+                VRBO Rates →
+              </a>
+            </div>
           </div>
         </section>
 
         {/* === Property 2: The Sunrise Condo === */}
-        <section style={sectionStyle}>
-          <img
-            src="/581506_1_51205717-full.avif"
-            alt="The Sunrise Condo"
-            style={imgStyle}
-          />
-          <h3 style={titleStyle}>The Sunrise Condo</h3>
-          <p style={subtitleStyle}>Scottsdale • Sleeps 2</p>
+        <section style={sectionWrapper}>
+          <div className="mountainCard">
+            <img
+              src="/581506_1_51205717-full.avif"
+              alt="The Sunrise Condo"
+              style={imgStyle}
+            />
+            <h3 style={titleStyle}>The Sunrise Condo</h3>
+            <p style={subtitleStyle}>Scottsdale • Sleeps 2</p>
 
-          <p style={chipWrapper}>
-            <span style={chipStyle}>wifi</span>
-            <span style={chipStyle}>parking</span>
-            <span style={chipStyle}>furnished</span>
-          </p>
+            <p style={chipWrapper}>
+              <span style={chipStyle}>wifi</span>
+              <span style={chipStyle}>parking</span>
+              <span style={chipStyle}>furnished</span>
+            </p>
 
-          <p style={directStyle}>
-            <strong>Book Directly and Save!</strong>
-            <br />
-            Email:{" "}
-            <a href="mailto:nick.hecht@yahoo.com" style={emailStyle}>
-              nick.hecht@yahoo.com
-            </a>
-          </p>
+            <p style={directStyle}>
+              <strong>Book Directly and Save!</strong>
+              <br />
+              Email:{" "}
+              <a href="mailto:nick.hecht@yahoo.com" style={emailStyle}>
+                nick.hecht@yahoo.com
+              </a>
+            </p>
 
-          <div style={btnWrapper}>
-            <a
-              href="https://www.furnishedfinder.com/property/581506_1?moveDate=%7B%22in%22%3A%222026-04-01%22%7D&budget=%7B%22min%22%3A2000%2C%22max%22%3A2500%7D&filters=%7B%22minBedroomCount%22%3A1%2C%22minBedCount%22%3A1%2C%22minBathroomCount%22%3A1%7D"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={btnStyle}
-            >
-              Furnished Finder Rates →
-            </a>
+            <div style={btnWrapper}>
+              <a
+                href="https://www.furnishedfinder.com/property/581506_1?moveDate=%7B%22in%22%3A%222026-04-01%22%7D&budget=%7B%22min%22%3A2000%2C%22max%22%3A2500%7D&filters=%7B%22minBedroomCount%22%3A1%2C%22minBedCount%22%3A1%2C%22minBathroomCount%22%3A1%7D"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={btnStyle}
+              >
+                Furnished Finder Rates →
+              </a>
+            </div>
           </div>
         </section>
 
@@ -555,13 +600,8 @@ const headerText = {
   color: "#40e0d0", // turquoise
 };
 
-const sectionStyle = {
+const sectionWrapper = {
   margin: "2rem 0",
-  padding: "1.25rem",
-  border: "1px solid #7a2a1e",
-  borderRadius: "1rem",
-  backgroundColor: "#822e22", // darker card bg
-  backdropFilter: "saturate(1.1)",
 };
 
 const imgStyle = {
