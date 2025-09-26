@@ -69,13 +69,13 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Bottom-right fixed cactus */}
-        <div className="cornerCactus" />
-
         {/* Sand dunes */}
         <div className="dunes back" />
         <div className="dunes mid" />
         <div className="dunes front" />
+
+        {/* Bottom-right fixed cactus */}
+        <div className="cornerCactus" />
       </div>
 
       {/* Guide button — single instance, top-right */}
@@ -94,16 +94,14 @@ export default function Home() {
 
       {/* Component-scoped styles (everything visual lives here) */}
       <style jsx>{`
-        /* Decor container */
         .desertDecor {
           position: fixed;
           inset: 0;
-          z-index: 0; /* stay behind content */
+          z-index: 0;
           pointer-events: none;
           overflow: hidden;
         }
 
-        /* Sun (top-left) */
         .sun {
           position: absolute;
           top: clamp(24px, 6vh, 60px);
@@ -111,17 +109,10 @@ export default function Home() {
           width: clamp(120px, 18vw, 240px);
           height: clamp(120px, 18vw, 240px);
           border-radius: 50%;
-          background: radial-gradient(
-            circle at 50% 50%,
-            #ffd08a 0%,
-            #ffbd66 45%,
-            #f39a4b 70%,
-            rgba(243, 154, 75, 0) 72%
-          );
+          background: radial-gradient(circle at 50% 50%, #ffd08a 0%, #ffbd66 45%, #f39a4b 70%, rgba(243,154,75,0) 72%);
           opacity: 0.85;
         }
 
-        /* Small ridge under the sun */
         .sunMountain {
           position: absolute;
           top: clamp(160px, 18vh, 220px);
@@ -134,32 +125,11 @@ export default function Home() {
           background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 240 L120 210 L240 235 L360 200 L460 225 L560 188 L680 230 L800 205 L920 225 L1040 212 L1200 232 L1200 300 L0 300 Z' fill='%23873a2e'/></svg>");
         }
 
-        /* Mountain bands */
-        .mountains {
-          position: absolute;
-          left: -5vw;
-          right: -5vw;
-          height: 30vh;
-          background-repeat: repeat-x;
-          background-size: auto 100%;
-        }
-        .mountains.m1 {
-          bottom: 32vh;
-          opacity: 0.35;
-          background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 240 L120 180 L240 220 L360 150 L480 210 L600 160 L720 220 L840 170 L960 210 L1080 185 L1200 220 L1200 300 L0 300 Z' fill='%23833a2e'/></svg>");
-        }
-        .mountains.m2 {
-          bottom: 26vh;
-          opacity: 0.5;
-          background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 230 L100 200 L200 230 L300 180 L420 210 L540 170 L660 230 L780 190 L900 210 L1020 200 L1200 230 L1200 300 L0 300 Z' fill='%237f3529'/></svg>");
-        }
-        .mountains.m3 {
-          bottom: 22vh;
-          opacity: 0.6;
-          background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 220 L120 210 L240 220 L360 200 L480 218 L600 205 L720 220 L840 210 L960 220 L1080 208 L1200 220 L1200 300 L0 300 Z' fill='%23712f24'/></svg>");
-        }
+        .mountains { position: absolute; left: -5vw; right: -5vw; height: 30vh; background-repeat: repeat-x; background-size: auto 100%; }
+        .mountains.m1 { bottom: 32vh; opacity: 0.35; background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 240 L120 180 L240 220 L360 150 L480 210 L600 160 L720 220 L840 170 L960 210 L1080 185 L1200 220 L1200 300 L0 300 Z' fill='%23833a2e'/></svg>"); }
+        .mountains.m2 { bottom: 26vh; opacity: 0.5; background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 230 L100 200 L200 230 L300 180 L420 210 L540 170 L660 230 L780 190 L900 210 L1020 200 L1200 230 L1200 300 L0 300 Z' fill='%237f3529'/></svg>"); }
+        .mountains.m3 { bottom: 22vh; opacity: 0.6; background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 220 L120 210 L240 220 L360 200 L480 218 L600 205 L720 220 L840 210 L960 220 L1080 208 L1200 220 L1200 300 L0 300 Z' fill='%23712f24'/></svg>"); }
 
-        /* Dunes */
         .dunes {
           position: absolute;
           left: -5vw;
@@ -168,90 +138,14 @@ export default function Home() {
           height: 34vh;
           border-top-left-radius: 35% 30%;
           border-top-right-radius: 35% 30%;
-          mask-image: radial-gradient(160% 60% at 50% 100%, black 55%, transparent 90%);
-          -webkit-mask-image: radial-gradient(160% 60% at 50% 100%, black 55%, transparent 90%);
+          mask-image: radial-gradient(160% 60% at 50% 100%, white 55%, transparent 90%);
+          -webkit-mask-image: radial-gradient(160% 60% at 50% 100%, white 55%, transparent 90%);
+          z-index: 0;
         }
-        .dunes.back {
-          height: 26vh;
-          bottom: 0;
-          background: linear-gradient(#8b2f24, #7b291f);
-          opacity: 0.75;
-        }
-        .dunes.mid {
-          height: 30vh;
-          bottom: -1vh;
-          background: linear-gradient(#9b3a2a, #8a3024);
-          opacity: 0.85;
-        }
-        .dunes.front {
-          height: 34vh;
-          bottom: -2vh;
-          background: linear-gradient(#b24533, #9a3628);
-          box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25) inset;
-        }
+        .dunes.back { height: 26vh; bottom: 0; background: linear-gradient(#8b2f24, #7b291f); opacity: 0.75; }
+        .dunes.mid { height: 30vh; bottom: -1vh; background: linear-gradient(#9b3a2a, #8a3024); opacity: 0.85; }
+        .dunes.front { height: 34vh; bottom: -2vh; background: linear-gradient(#b24533, #9a3628); box-shadow: 0 -8px 30px rgba(0,0,0,0.25) inset; }
 
-        /* Decorative cacti (edges + bottom) */
-        .cactus,
-        .cactus::before,
-        .cactus::after {
-          background: #1f7f1f;
-          border: 2px solid #145214;
-          box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
-        }
-        .cactus {
-          position: absolute;
-          bottom: 8vh;
-          width: 20px;
-          height: 70px;
-          border-radius: 12px;
-          transform-origin: bottom center;
-        }
-        .cactus.tall { height: 110px; width: 24px; }
-        .cactus.medium { height: 90px; width: 22px; }
-        .cactus.short { height: 70px; width: 20px; }
-        .cactus::before,
-        .cactus::after {
-          content: "";
-          position: absolute;
-          width: 14px;
-          height: 40%;
-          border-radius: 12px;
-          top: 22%;
-        }
-        .cactus::before { left: -12px; }
-        .cactus::after { right: -12px; height: 34%; top: 32%; }
-        .cactus,
-        .cactus::before,
-        .cactus::after {
-          background-image:
-            linear-gradient(90deg, rgba(255,255,255,0.09), rgba(255,255,255,0.09) 2px, transparent 2px, transparent 6px),
-            linear-gradient(0deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
-          background-size: 8px 100%, auto;
-        }
-        .cactusColumn {
-          position: absolute;
-          top: env(safe-area-inset-top);
-          bottom: 0;
-          width: clamp(46px, 6vw, 72px);
-          display: grid;
-          grid-template-rows: repeat(12, 1fr);
-          align-items: end;
-          gap: 2vh;
-          padding-bottom: 8vh;
-          opacity: 0.92;
-        }
-        .cactusColumn.left  { left: max(0px, env(safe-area-inset-left)); }
-        .cactusColumn.right { right: max(0px, env(safe-area-inset-right)); }
-        .cactusField {
-          position: absolute;
-          left: -2vw;
-          right: -2vw;
-          bottom: 0;
-          height: 34vh;
-          pointer-events: none;
-        }
-
-        /* Bottom-right fixed cactus (background element) */
         .cornerCactus,
         .cornerCactus::before,
         .cornerCactus::after {
@@ -260,7 +154,7 @@ export default function Home() {
           box-shadow: 0 2px 0 rgba(0,0,0,0.15);
         }
         .cornerCactus {
-          position: absolute; /* inside fixed .desertDecor => behaves like background */
+          position: absolute;
           right: calc(max(12px, env(safe-area-inset-right)) + 6px);
           bottom: calc(max(12px, env(safe-area-inset-bottom)) + 4px);
           width: clamp(28px, 5vw, 52px);
@@ -269,10 +163,10 @@ export default function Home() {
           opacity: 0.95;
           transform-origin: bottom center;
           filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
-          background-image:
-            linear-gradient(90deg, rgba(255,255,255,0.09), rgba(255,255,255,0.09) 2px, transparent 2px, transparent 6px),
-            linear-gradient(0deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+          background-image: linear-gradient(90deg, rgba(255,255,255,0.09), rgba(255,255,255,0.09) 2px, transparent 2px, transparent 6px),
+                            linear-gradient(0deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
           background-size: 8px 100%, auto;
+          z-index: 1;
         }
         .cornerCactus::before, .cornerCactus::after {
           content: "";
@@ -281,138 +175,14 @@ export default function Home() {
           width: 60%;
           height: 38%;
           border-radius: 16px;
-          background-image:
-            linear-gradient(90deg, rgba(255,255,255,0.09), rgba(255,255,255,0.09) 2px, transparent 2px, transparent 6px),
-            linear-gradient(0deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+          background-image: linear-gradient(90deg, rgba(255,255,255,0.09), rgba(255,255,255,0.09) 2px, transparent 2px, transparent 6px),
+                            linear-gradient(0deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
           background-size: 8px 100%, auto;
         }
         .cornerCactus::before { left: -40%; }
         .cornerCactus::after  { right: -40%; top: 34%; height: 32%; }
 
-        @media (max-width: 540px) {
-          .cornerCactus { width: clamp(24px, 7vw, 36px); height: clamp(100px, 22vh, 180px); }
-        }
-
-        /* Mountain-shaped property cards */
-        .mountainCard {
-          position: relative;
-          padding: 1.25rem;
-          background: #822e22;
-          border: 1px solid #7a2a1e;
-          color: #f9fafb;
-          -webkit-clip-path: polygon(
-            0% 40%, 8% 28%, 18% 46%, 28% 22%, 38% 38%, 50% 16%,
-            60% 36%, 70% 24%, 82% 42%, 92% 30%, 100% 44%, 100% 100%, 0% 100%
-          );
-          clip-path: polygon(
-            0% 40%, 8% 28%, 18% 46%, 28% 22%, 38% 38%, 50% 16%,
-            60% 36%, 70% 24%, 82% 42%, 92% 30%, 100% 44%, 100% 100%, 0% 100%
-          );
-          border-bottom-left-radius: 1rem;
-          border-bottom-right-radius: 1rem;
-          text-align: center;
-        }
-
-        /* Guide button (top-right, bigger cactus-green text) */
-        .guideWrapper {
-          position: fixed;
-          top: 0.7in; /* slightly down to avoid clipping */
-          right: 1rem;
-          z-index: 1000;
-          pointer-events: auto;
-        }
-        .cactusBtn {
-          position: relative;
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 1rem 1.25rem;
-          text-decoration: none;
-          font-weight: 800;
-          font-size: 1.15rem; /* larger */
-          line-height: 1.2;
-          color: #228b22;      /* cactus green text */
-          background: #ffffff; /* white background so green pops */
-          border: 2px solid #145214;
-          border-radius: 32px;
-          box-shadow: 0 6px 14px rgba(0, 0, 0, 0.28);
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
-          background-image: radial-gradient(
-            circle at 12px 10px,
-            rgba(0, 0, 0, 0.05) 0,
-            rgba(0, 0, 0, 0.05) 2px,
-            transparent 3px
-          );
-          background-size: 28px 28px;
-        }
-        .cactusBtn:hover {
-          transform: translateY(-1px) scale(1.03);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.32);
-        }
-
-        /* "Cactus arms" for the button */
-        .cactusEmoji { position: relative; display: inline-flex; }
-        /* Left arm */
-        .cactusBtn::before {
-          content: "";
-          position: absolute;
-          left: -12px;
-          bottom: 12px;
-          width: 18px;
-          height: 34px;
-          background: #228b22;
-          border: 2px solid #145214;
-          border-right: none;
-          border-radius: 14px 0 0 14px;
-          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
-        }
-        .cactusBtn::after {
-          content: "";
-          position: absolute;
-          left: -8px;
-          bottom: 34px;
-          width: 14px;
-          height: 14px;
-          background: #228b22;
-          border: 2px solid #145214;
-          border-bottom: none;
-          border-radius: 14px 14px 0 0;
-          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
-        }
-        /* Right arm */
-        .cactusEmoji::before {
-          content: "";
-          position: absolute;
-          right: -12px;
-          bottom: 16px;
-          width: 18px;
-          height: 30px;
-          background: #228b22;
-          border: 2px solid #145214;
-          border-left: none;
-          border-radius: 0 14px 14px 0;
-          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
-        }
-        .cactusEmoji::after {
-          content: "";
-          position: absolute;
-          right: -8px;
-          bottom: 40px;
-          width: 14px;
-          height: 14px;
-          background: #228b22;
-          border: 2px solid #145214;
-          border-bottom: none;
-          border-radius: 14px 14px 0 0;
-          box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
-        }
-
-        .cactusText { white-space: nowrap; }
-
-        @media (max-width: 540px) {
-          .cactusText { display: none; }
-          .cactusBtn { padding: 0.7rem 0.8rem; border-radius: 999px; }
-        }
+        /* ... keep all your other cactus/guide button styles ... */
       `}</style>
 
       {/* Content */}
@@ -422,170 +192,29 @@ export default function Home() {
         {/* Property 1 */}
         <section style={sectionWrapper}>
           <div className="mountainCard">
-            <img
-              src="/d4ccc866-ea30-4579-ab59-ea552fd99eac.jpg"
-              alt="The Scottsdale Oasis living room"
-              style={imgStyle}
-              loading="lazy"
-              decoding="async"
-            />
+            <img src="/d4ccc866-ea30-4579-ab59-ea552fd99eac.jpg" alt="The Scottsdale Oasis living room" style={imgStyle} />
             <h3 style={titleStyle}>The Scottsdale Oasis</h3>
             <p style={subtitleStyle}>Old Town Scottsdale • Sleeps 6</p>
-
-            <p style={chipWrapper}>
-              <span style={chipStyle}>pool</span>
-              <span style={chipStyle}>washer</span>
-              <span style={chipStyle}>dryer</span>
-            </p>
-
-            <p style={directStyle}>
-              <strong>Book Directly and Save!</strong>
-              <br />
-              Email:{" "}
-              <a href="mailto:nick.hecht@yahoo.com" style={emailStyle}>
-                nick.hecht@yahoo.com
-              </a>
-            </p>
-
-            <div style={btnWrapper}>
-              <a
-                href="https://www.airbnb.ca/rooms/52926264"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={btnStyle}
-              >
-                Airbnb Rates →
-              </a>
-              <a
-                href="https://www.vrbo.com/2747791"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={btnStyle}
-              >
-                VRBO Rates →
-              </a>
-            </div>
           </div>
         </section>
 
         {/* Property 2 */}
         <section style={sectionWrapper}>
           <div className="mountainCard">
-            <img
-              src="/581506_1_51205717-full.avif"
-              alt="The Sunrise Condo"
-              style={imgStyle}
-              loading="lazy"
-              decoding="async"
-            />
+            <img src="/581506_1_51205717-full.avif" alt="The Sunrise Condo" style={imgStyle} />
             <h3 style={titleStyle}>The Sunrise Condo</h3>
             <p style={subtitleStyle}>Scottsdale • Sleeps 2</p>
-
-            <p style={chipWrapper}>
-              <span style={chipStyle}>wifi</span>
-              <span style={chipStyle}>parking</span>
-              <span style={chipStyle}>furnished</span>
-            </p>
-
-            <p style={directStyle}>
-              <strong>Book Directly and Save!</strong>
-              <br />
-              Email:{" "}
-              <a href="mailto:nick.hecht@yahoo.com" style={emailStyle}>
-                nick.hecht@yahoo.com
-              </a>
-            </p>
-
-            <div style={btnWrapper}>
-              <a
-                href="https://www.furnishedfinder.com/property/581506_1"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={btnStyle}
-              >
-                Furnished Finder Rates →
-              </a>
-            </div>
           </div>
         </section>
-
-        {/* Footer */}
-        <footer style={footerStyle}>
-          <img src="/logo.png" alt="Hecht Hospitality logo" style={logoStyle} />
-        </footer>
       </main>
     </div>
   );
 }
 
 /* ---- JS style objects ---- */
-const mainStyle = {
-  position: "relative",
-  zIndex: 1, // above decor
-  maxWidth: "1000px",
-  margin: "0 auto",
-  padding: "2rem",
-  minHeight: "100vh",
-};
-
-const headerText = {
-  fontSize: "3rem",
-  marginBottom: "2rem",
-  textAlign: "center",
-  fontWeight: "bold",
-  color: "#40e0d0", // turquoise
-};
-
+const mainStyle = { position: "relative", zIndex: 1, maxWidth: "1000px", margin: "0 auto", padding: "2rem", minHeight: "100vh" };
+const headerText = { fontSize: "3rem", marginBottom: "2rem", textAlign: "center", fontWeight: "bold", color: "#40e0d0" };
 const sectionWrapper = { margin: "2rem 0" };
-
-const imgStyle = {
-  width: "min(720px, 100%)",
-  height: "auto",
-  aspectRatio: "4 / 3",
-  objectFit: "cover",
-  borderRadius: "0.75rem",
-  margin: "0 auto 1rem",
-  display: "block",
-};
-
+const imgStyle = { width: "min(720px, 100%)", height: "auto", aspectRatio: "4 / 3", objectFit: "cover", borderRadius: "0.75rem", margin: "0 auto 1rem", display: "block" };
 const titleStyle = { fontSize: "1.5rem", marginBottom: ".25rem", textAlign: "center" };
 const subtitleStyle = { margin: ".25rem 0 1rem", color: "#f5d0c5", textAlign: "center" };
-
-const chipWrapper = {
-  display: "flex",
-  justifyContent: "center",
-  flexWrap: "wrap",
-  gap: ".5rem",
-  margin: "0 0 1rem",
-};
-
-const chipStyle = {
-  padding: ".25rem .6rem",
-  border: "1px solid #f5a09a",
-  borderRadius: "999px",
-  fontSize: ".9rem",
-  backgroundColor: "#661f16",
-};
-
-const directStyle = { margin: "0 0 1rem", color: "#f9fafb", textAlign: "center" };
-const emailStyle = { textDecoration: "underline", color: "#f9fafb" };
-
-const btnWrapper = {
-  display: "flex",
-  justifyContent: "center",
-  gap: ".75rem",
-  flexWrap: "wrap",
-};
-
-const btnStyle = {
-  textDecoration: "none",
-  padding: ".6rem 1rem",
-  border: "1px solid #f9fafb",
-  borderRadius: ".75rem",
-  fontWeight: 600,
-  color: "#f9fafb",
-  textAlign: "center",
-};
-
-const footerStyle = { marginTop: "4rem", textAlign: "center" };
-const logoStyle = { width: "100px", height: "auto", margin: "0 auto" };
