@@ -69,6 +69,9 @@ export default function Home() {
           ))}
         </div>
 
+        {/* Bottom-right fixed cactus */}
+        <div className="cornerCactus" />
+
         {/* Sand dunes */}
         <div className="dunes back" />
         <div className="dunes mid" />
@@ -143,7 +146,7 @@ export default function Home() {
         .mountains.m1 {
           bottom: 32vh;
           opacity: 0.35;
-          background-image: url("data:image/svg+xml;utf8;<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 240 L120 180 L240 220 L360 150 L480 210 L600 160 L720 220 L840 170 L960 210 L1080 185 L1200 220 L1200 300 L0 300 Z' fill='%23833a2e'/></svg>");
+          background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 240 L120 180 L240 220 L360 150 L480 210 L600 160 L720 220 L840 170 L960 210 L1080 185 L1200 220 L1200 300 L0 300 Z' fill='%23833a2e'/></svg>");
         }
         .mountains.m2 {
           bottom: 26vh;
@@ -246,6 +249,48 @@ export default function Home() {
           bottom: 0;
           height: 34vh;
           pointer-events: none;
+        }
+
+        /* Bottom-right fixed cactus (background element) */
+        .cornerCactus,
+        .cornerCactus::before,
+        .cornerCactus::after {
+          background: #1f7f1f;
+          border: 2px solid #145214;
+          box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+        }
+        .cornerCactus {
+          position: absolute; /* inside fixed .desertDecor => behaves like background */
+          right: calc(max(12px, env(safe-area-inset-right)) + 6px);
+          bottom: calc(max(12px, env(safe-area-inset-bottom)) + 4px);
+          width: clamp(28px, 5vw, 52px);
+          height: clamp(120px, 24vh, 220px);
+          border-radius: 16px;
+          opacity: 0.95;
+          transform-origin: bottom center;
+          filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
+          background-image:
+            linear-gradient(90deg, rgba(255,255,255,0.09), rgba(255,255,255,0.09) 2px, transparent 2px, transparent 6px),
+            linear-gradient(0deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+          background-size: 8px 100%, auto;
+        }
+        .cornerCactus::before, .cornerCactus::after {
+          content: "";
+          position: absolute;
+          top: 24%;
+          width: 60%;
+          height: 38%;
+          border-radius: 16px;
+          background-image:
+            linear-gradient(90deg, rgba(255,255,255,0.09), rgba(255,255,255,0.09) 2px, transparent 2px, transparent 6px),
+            linear-gradient(0deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+          background-size: 8px 100%, auto;
+        }
+        .cornerCactus::before { left: -40%; }
+        .cornerCactus::after  { right: -40%; top: 34%; height: 32%; }
+
+        @media (max-width: 540px) {
+          .cornerCactus { width: clamp(24px, 7vw, 36px); height: clamp(100px, 22vh, 180px); }
         }
 
         /* Mountain-shaped property cards */
