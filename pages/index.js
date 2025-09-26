@@ -6,6 +6,7 @@ export default function Home() {
     <div>
       <Head>
         <title>Hecht Hospitality</title>
+        <meta charSet="utf-8" />
         <meta
           name="description"
           content="Modern, easy stays in Scottsdale. Book on Airbnb, VRBO, or Furnished Finder."
@@ -15,6 +16,7 @@ export default function Home() {
 
       {/* Global styles */}
       <style jsx global>{`
+        *, *::before, *::after { box-sizing: border-box; }
         html,
         body,
         #__next {
@@ -28,9 +30,7 @@ export default function Home() {
             sans-serif;
           overflow-x: hidden;
         }
-        a {
-          color: inherit;
-        }
+        a { color: inherit; }
       `}</style>
 
       {/* Background decor (behind all content) */}
@@ -60,15 +60,13 @@ export default function Home() {
         <div className="cactusField">
           {Array.from({ length: 28 }).map((_, i) => (
             <div
-              key={`bf-${i}`}
+              key={`bf-${i}`]
               className={`cactus ${
                 i % 3 === 0 ? "tall" : i % 3 === 1 ? "medium" : "short"
               }`}
               style={{
                 left: `calc(${(i / 27) * 100}% + ${(i % 5) * 6 - 12}px)`,
-                transform: `translateY(${(i % 7) * 2 - 6}px) scale(${
-                  0.9 + ((i * 7) % 10) / 30
-                })`,
+                transform: `translateY(${(i % 7) * 2 - 6}px) scale(${0.9 + ((i * 7) % 10) / 30})`,
               }}
             />
           ))}
@@ -84,7 +82,7 @@ export default function Home() {
       <div className="guideWrapper">
         <a
           className="cactusBtn"
-          href="https://www.airbnb.ca/s/guidebooks?refinement_paths[]=/guidebooks/3454492"
+          href="https://www.airbnb.ca/s/guidebooks?refinement_paths%5B%5D=/guidebooks/3454492"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Hecht Hospitality Guide to Scottsdale"
@@ -171,6 +169,7 @@ export default function Home() {
           border-top-left-radius: 35% 30%;
           border-top-right-radius: 35% 30%;
           mask-image: radial-gradient(160% 60% at 50% 100%, black 55%, transparent 90%);
+          -webkit-mask-image: radial-gradient(160% 60% at 50% 100%, black 55%, transparent 90%);
         }
         .dunes.back {
           height: 26vh;
@@ -236,7 +235,7 @@ export default function Home() {
         }
         .cactusColumn {
           position: absolute;
-          top: 0;
+          top: env(safe-area-inset-top);
           bottom: 0;
           width: clamp(46px, 6vw, 72px);
           display: grid;
@@ -337,11 +336,7 @@ export default function Home() {
         }
 
         /* "Cactus arms" for the button */
-        .cactusEmoji {
-          position: relative;
-          display: inline-flex;
-        }
-        /* Left arm */
+        .cactusEmoji { position: relative; display: inline-flex; }
         .cactusBtn::before {
           content: "";
           position: absolute;
@@ -368,7 +363,6 @@ export default function Home() {
           border-radius: 14px 14px 0 0;
           box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
         }
-        /* Right arm */
         .cactusEmoji::before {
           content: "";
           position: absolute;
@@ -415,6 +409,8 @@ export default function Home() {
               src="/d4ccc866-ea30-4579-ab59-ea552fd99eac.jpg"
               alt="The Scottsdale Oasis living room"
               style={imgStyle}
+              loading="lazy"
+              decoding="async"
             />
             <h3 style={titleStyle}>The Scottsdale Oasis</h3>
             <p style={subtitleStyle}>Old Town Scottsdale • Sleeps 6</p>
@@ -462,6 +458,8 @@ export default function Home() {
               src="/581506_1_51205717-full.avif"
               alt="The Sunrise Condo"
               style={imgStyle}
+              loading="lazy"
+              decoding="async"
             />
             <h3 style={titleStyle}>The Sunrise Condo</h3>
             <p style={subtitleStyle}>Scottsdale • Sleeps 2</p>
@@ -524,8 +522,9 @@ const headerText = {
 const sectionWrapper = { margin: "2rem 0" };
 
 const imgStyle = {
-  width: "50%",
-  height: "300px",
+  width: "min(720px, 100%)",
+  height: "auto",
+  aspectRatio: "4 / 3",
   objectFit: "cover",
   borderRadius: "0.75rem",
   margin: "0 auto 1rem",
@@ -572,4 +571,4 @@ const btnStyle = {
 };
 
 const footerStyle = { marginTop: "4rem", textAlign: "center" };
-const logoStyle = { width: "100px", margin: "0 auto" };
+const logoStyle = { width: "100px", height: "auto", margin: "0 auto" };
