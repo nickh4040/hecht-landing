@@ -17,17 +17,12 @@ export default function Home() {
       {/* Global styles */}
       <style jsx global>{`
         *, *::before, *::after { box-sizing: border-box; }
-        html,
-        body,
-        #__next {
-          height: 100%;
-        }
+        html, body, #__next { height: 100%; }
         body {
           margin: 0;
           background: #a33c2e; /* Sedona red */
           color: #f9fafb;
-          font-family: -apple-system, Inter, Segoe UI, Roboto, Helvetica, Arial,
-            sans-serif;
+          font-family: -apple-system, Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
           overflow-x: hidden;
         }
         a { color: inherit; }
@@ -60,13 +55,15 @@ export default function Home() {
         <div className="cactusField">
           {Array.from({ length: 28 }).map((_, i) => (
             <div
-              key={`bf-${i}`]
+              key={`bf-${i}`}
               className={`cactus ${
                 i % 3 === 0 ? "tall" : i % 3 === 1 ? "medium" : "short"
               }`}
               style={{
                 left: `calc(${(i / 27) * 100}% + ${(i % 5) * 6 - 12}px)`,
-                transform: `translateY(${(i % 7) * 2 - 6}px) scale(${0.9 + ((i * 7) % 10) / 30})`,
+                transform: `translateY(${(i % 7) * 2 - 6}px) scale(${
+                  0.9 + ((i * 7) % 10) / 30
+                })`,
               }}
             />
           ))}
@@ -146,7 +143,7 @@ export default function Home() {
         .mountains.m1 {
           bottom: 32vh;
           opacity: 0.35;
-          background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 240 L120 180 L240 220 L360 150 L480 210 L600 160 L720 220 L840 170 L960 210 L1080 185 L1200 220 L1200 300 L0 300 Z' fill='%23833a2e'/></svg>");
+          background-image: url("data:image/svg+xml;utf8;<svg viewBox='0 0 1200 300' xmlns='http://www.w3.org/2000/svg'><path d='M0 240 L120 180 L240 220 L360 150 L480 210 L600 160 L720 220 L840 170 L960 210 L1080 185 L1200 220 L1200 300 L0 300 Z' fill='%23833a2e'/></svg>");
         }
         .mountains.m2 {
           bottom: 26vh;
@@ -223,14 +220,9 @@ export default function Home() {
         .cactus,
         .cactus::before,
         .cactus::after {
-          background-image: linear-gradient(
-              90deg,
-              rgba(255, 255, 255, 0.09),
-              rgba(255, 255, 255, 0.09) 2px,
-              transparent 2px,
-              transparent 6px
-            ),
-            linear-gradient(0deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
+          background-image:
+            linear-gradient(90deg, rgba(255,255,255,0.09), rgba(255,255,255,0.09) 2px, transparent 2px, transparent 6px),
+            linear-gradient(0deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
           background-size: 8px 100%, auto;
         }
         .cactusColumn {
@@ -264,34 +256,12 @@ export default function Home() {
           border: 1px solid #7a2a1e;
           color: #f9fafb;
           -webkit-clip-path: polygon(
-            0% 40%,
-            8% 28%,
-            18% 46%,
-            28% 22%,
-            38% 38%,
-            50% 16%,
-            60% 36%,
-            70% 24%,
-            82% 42%,
-            92% 30%,
-            100% 44%,
-            100% 100%,
-            0% 100%
+            0% 40%, 8% 28%, 18% 46%, 28% 22%, 38% 38%, 50% 16%,
+            60% 36%, 70% 24%, 82% 42%, 92% 30%, 100% 44%, 100% 100%, 0% 100%
           );
           clip-path: polygon(
-            0% 40%,
-            8% 28%,
-            18% 46%,
-            28% 22%,
-            38% 38%,
-            50% 16%,
-            60% 36%,
-            70% 24%,
-            82% 42%,
-            92% 30%,
-            100% 44%,
-            100% 100%,
-            0% 100%
+            0% 40%, 8% 28%, 18% 46%, 28% 22%, 38% 38%, 50% 16%,
+            60% 36%, 70% 24%, 82% 42%, 92% 30%, 100% 44%, 100% 100%, 0% 100%
           );
           border-bottom-left-radius: 1rem;
           border-bottom-right-radius: 1rem;
@@ -337,6 +307,7 @@ export default function Home() {
 
         /* "Cactus arms" for the button */
         .cactusEmoji { position: relative; display: inline-flex; }
+        /* Left arm */
         .cactusBtn::before {
           content: "";
           position: absolute;
@@ -363,6 +334,7 @@ export default function Home() {
           border-radius: 14px 14px 0 0;
           box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.04);
         }
+        /* Right arm */
         .cactusEmoji::before {
           content: "";
           position: absolute;
